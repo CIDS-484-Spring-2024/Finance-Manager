@@ -1,0 +1,37 @@
+Research Outline for Randy Franzmeier:
+
+Goals:
+* Friendly looking User Interface
+* Secure Backend 
+* Efficient and well-tested API's
+* Secure sign-up and login
+* Proper route handling through Angular
+* Feature-rich application that offers valuable insights to users
+* Creative display of information/ analytics
+
+
+Resources and Methods:
+For learning about angular: https://angular.io/
+For learning about Go: https://go.dev/
+For learnig the basics: https://www.w3schools.com/
+For the gin framework: https://gin-gonic.com/
+For designing the UI: https://www.figma.com/
+For debugging errors: https://stackoverflow.com/
+
+IDE: I will be using GOLand becuase it is a feature-rich ide with 
+many tools to help me code faster and test my apis.
+
+Learning about financial planning:
+ https://www.fidelity.com/learning-center/personal-finance/retirement/how-to-build-a-financial-plan
+ https://www.creditkarma.com/financial-planning/i/how-to-make-a-financial-plan
+ https://online.hbs.edu/blog/post/finance-for-non-finance-professionals-finance-terms-to-know
+ 
+Design ideas:
+https://99designs.com/inspiration/websites/finance
+
+Security:
+https://stackoverflow.blog/2021/10/06/best-practices-for-authentication-and-authorization-for-rest-apis/
+https://learn.microsoft.com/en-us/entra/identity-platform/tutorial-v2-angular-auth-code
+
+Creating a login/signup page in angular with some plug-ins:
+https://developer.okta.com/blog/2019/02/12/secure-angular-login
