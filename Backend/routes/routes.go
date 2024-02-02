@@ -24,7 +24,6 @@ func GetUserDetails(context *gin.Context) {
 	if userId == "" {
 		context.JSON(http.StatusBadRequest, gin.H{"error:": "Unable to parse userID"})
 	}
-
 	//check if user is valid
 	//call database to retrieve information
 	//upon successful retrieval
