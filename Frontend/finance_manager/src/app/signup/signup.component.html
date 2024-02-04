@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<div class="userSignUp">
+  <h1>Don't have an account?</h1>
+  <form class="container" name="signup-form">
+    <h4>Email</h4>
+  <input id="email" name="newEmail" [(ngModel)]="email">
+<br>
+  <h4>Password</h4>
+  <input  type="password" id="newpassword" name="newPswd" [(ngModel)]="pswd">
+  <h4>Re-enter Password</h4>
+  <input type="password" id="re-enterpswd" name="confirmNewPswd" [(ngModel)]="spswd">
+  <br><br>
+  <button type="submit" class="btn btn-primary" (click)="displayContents()">Sign Up</button>
+    <br>
+  </form>
+</div>

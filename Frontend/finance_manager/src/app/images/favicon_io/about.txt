@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Anaheim
+- Font Author: Copyright (c) 2012, vernon adams (vern@newtypography.co.uk), with Reserved Font Names 'Anaheim'
+- Font Source: http://fonts.gstatic.com/s/anaheim/v14/8vII7w042Wp87g4G0UTUEE5eK_w.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))
