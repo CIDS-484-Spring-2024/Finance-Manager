@@ -1,18 +1,39 @@
-div.userSignUp {
+div#userSignUp {
   background: #12e3e3;
-  /*margin-left: 10%;*/
-  display: inline-block;
-  vertical-align: top;
-  width:calc(25% + 100px);
-  height: 100%;
+  /*display: inline-block;*/
+  /*vertical-align: top;*/
+  /*width:calc(25% + 50px);*/
+  /*max-width:calc(25% + 50px);*/
+  /*height: 100%;*/
+
 }
 
-form {
+/*form {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  justify-content: flex-end;*/
+/*  align-items: center;*/
+/*}*/
 
+/*div.form-wrapper1 {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*}*/
+
+input {
+  width: 25%;/*70%*/
+}
+
+p {
+  color: red;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-}
-
-
+  align-items: center;}

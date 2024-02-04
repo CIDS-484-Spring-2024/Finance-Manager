@@ -1,16 +1,19 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<div class="userSignUp">
+<div id="userSignUp" class="row row-cols-1">
   <h1>Don't have an account?</h1>
+  <div class="form-wrapper1">
   <form class="container" name="signup-form">
     <h4>Email</h4>
-  <input id="email" name="newEmail" [(ngModel)]="email">
+  <input id="email" name="newEmail" class="form-control" (input)="setEmail($event)">
 <br>
   <h4>Password</h4>
-  <input  type="password" id="newpassword" name="newPswd" [(ngModel)]="pswd">
+  <input  type="password" id="newpassword" name="newPswd" class="form-control" (input)="setNewPswd($event)">
   <h4>Re-enter Password</h4>
-  <input type="password" id="re-enterpswd" name="confirmNewPswd" [(ngModel)]="spswd">
-  <br><br>
-  <button type="submit" class="btn btn-primary" (click)="displayContents()">Sign Up</button>
+  <input type="password" id="re-enterpswd" name="confirmNewPswd" class="form-control" (input)="setDuplicatePswd($event)">
+    <p [textContent]="pswdMatch"></p>
+  <br>
+  <button type="submit" class="btn btn-primary" (click)="postData()">Sign Up</button>
     <br>
   </form>
+  </div>
 </div>
