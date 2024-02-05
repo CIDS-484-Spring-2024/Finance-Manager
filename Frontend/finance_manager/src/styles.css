@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --customgreen: #5ca45a;
+}
+html {
+  height: 100vh;
+  width: 100vw;
+  background-image:linear-gradient(#60b5ec, #b4eeac);
+  /*background-repeat: no-repeat;*/
+}
+

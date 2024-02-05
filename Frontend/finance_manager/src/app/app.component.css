@@ -6,6 +6,10 @@ h1 {
   margin-bottom: 5%;
 }
 
+section {
+  background-color: #60b5ec;
+  /*background-image:linear-gradient(#60b5ec, #b4eeac);*/
+}
 
 
 .container {

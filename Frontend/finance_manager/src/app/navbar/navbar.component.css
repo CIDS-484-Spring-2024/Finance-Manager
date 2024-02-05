@@ -1,0 +1,11 @@
+:root {
+  --customgreen: #5ca45a;
+}
+
+a {
+  color: #60b5ec;
+}
+
+a:hover {
+  color: lightgray;
+}
