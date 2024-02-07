@@ -1,4 +1,62 @@
 div.home-container {
+  margin-top: 0;
   text-align: center;
-  width: 75%;
+  width: 100%;
+  /*background-image: url("../../assets/Soaring_Eagle.jpg");*/
+  background-image: linear-gradient(#e3f2fd, #4ee5f3);
+  background-repeat: no-repeat;
+}
+
+h1.title {
+  font-weight: bold;
+  font-size: 450%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 4%;
+}
+
+h2 {
+  font-size: 350%;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: row;
+  /*gap: 2%;*/
+}
+
+.right-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.right-row, .left-row {
+  flex: 1 1 0;
+  margin-bottom: 10%;
+}
+.right-row>div {
+  width: 80%;
+  /*height: 25%;*/
+  background: #60b5ec;
+  /*margin: 0;*/
+  /*position: absolute;*/
+  display: flex;
+  /*justify-content: center;*/
+  /*align-items: center;*/
+
+}
+
+.generate-lead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.generate-lead:hover {
+  cursor: pointer;
+ color: #656565;
 }

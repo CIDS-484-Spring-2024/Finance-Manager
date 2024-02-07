@@ -3,11 +3,12 @@ h1 {
   /*display: flex;*/
   /*justify-content: center;*/
   /*align-items: center;*/
-  margin-bottom: 5%;
+  /*margin-bottom: 5%;*/
 }
 
 section {
-  background-color: #60b5ec;
+  /*background-color: #60b5ec;*/
+  /*background-color: black;*/
   /*background-image:linear-gradient(#60b5ec, #b4eeac);*/
 }
 
@@ -34,5 +35,9 @@ section {
   width: calc(30% + 50px);
   max-width:calc(35% + 50px);
   /*flex-flow: column;*/
+}
+.home {
+  margin-top: -3vw;
+  margin-bottom: 0;
 }
 
