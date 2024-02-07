@@ -1,4 +1,4 @@
-package Mysql_connection
+package Mysqlconnection
 
 import (
 	"database/sql"
@@ -7,20 +7,25 @@ import (
 
 type DB struct {
 	DbDriver *sql.DB
+	test     string
 }
 
-func (db *DB) StartDB() {
+func NewDB() *DB {
+	return &DB{}
+}
+
+func (db *DB) Start() error {
 
 	// establish connection with database
-	dbPtr, err := sql.Open("mysql", "username:password@tcp(127.0.0.1:3306)/test")
+	dbPtr, err := sql.Open("mysql", "goapi:go@tcp(127.0.0.1:3306)/financedbschema")
 
 	// If the database connection fails
 	if err != nil {
-		panic(err)
+		return err
 	}
 
-	db.DbDriver = dbPtr
-
+	db.DbDriver = dbPtr //update the driver variable
 	//close the connection
 	defer dbPtr.Close()
+	return nil
 }
