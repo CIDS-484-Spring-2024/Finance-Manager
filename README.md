@@ -3,7 +3,7 @@
 # Authors
 ## Randy Franzmeier and Colton Williams
 
-## With Financial Advisory Help From John
+## With Financial Advisory Help From John Fritzke
 
 # Overview
 ## This application will take in user financial information, and display results based off of their needs. Ideally, the user will login or create an account, be able to manage their finances, and even recieve tips.
