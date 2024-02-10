@@ -2,13 +2,13 @@
   --customgreen: #5ca45a;
 }
 /* background for navbar #e3f2fd;*/
+
+ a:hover {
+  color: lightgray;
+}
 a {
   color: black;
-  /*color: #60b5ec;*/
-}
-
-a:hover {
-  color: lightgray;
+  font-size: 150%;
 }
 
 nav {

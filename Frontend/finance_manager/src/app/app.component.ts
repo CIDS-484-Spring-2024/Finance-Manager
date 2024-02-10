@@ -5,11 +5,12 @@ import {SignupComponent} from "./signup/signup.component";
 import { FormsModule } from "@angular/forms";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {LandingPageComponent} from "./landing-page/landing-page.component";
+import {UserDetailsComponent} from "./user-details/user-details.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent, SignupComponent, FormsModule, NavbarComponent, LandingPageComponent],
+  imports: [RouterOutlet, LoginComponent, SignupComponent, FormsModule, NavbarComponent, LandingPageComponent, UserDetailsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

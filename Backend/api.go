@@ -10,7 +10,9 @@ import (
 func main() {
 	const port = ":3200"
 	engine := gin.Default() //pointer to gin.engine
-	startDB()
+	db := Mysqlconnection.NewDB()
+	db.Start()
+	//startDB()
 
 	//functions to be called when endpoint is accessed
 	engine.POST("/users/signup", routes.SignUp)
@@ -26,10 +28,11 @@ func main() {
 
 }
 
-func startDB() {
-	db := Mysqlconnection.NewDB()
-	err := db.Start()
-	if err != nil {
-		panic("error connecting to colton's db")
-	}
-}
+//
+//func startDB() {
+//	db := Mysqlconnection.NewDB()
+//	err := db.Start()
+//	if err != nil {
+//		panic("error connecting to colton's db")
+//	}
+//}
