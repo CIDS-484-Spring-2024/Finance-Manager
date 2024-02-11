@@ -1,4 +1,6 @@
 export const endpoints =
 {
-  'checkLogin':'http://localhost:8080/userLogin'
+  'checkLogin':'http://localhost:3200/users/login',
+  'signup':'http://localhost:3200/users/signup',
+  'getUserDetails':'http://localhost:3200/users/finance/' //append `${this.email for proper usage}`
 };

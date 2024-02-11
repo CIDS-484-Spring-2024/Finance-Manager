@@ -18,6 +18,20 @@ func SignUp(context *gin.Context) {
 
 }
 
+func Login(context *gin.Context) {
+	var credentials string
+	err := context.ShouldBindJSON(credentials)
+
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"err": "unable to parse input"})
+	}
+
+	//retrieve expected data
+	//assert email is as expected
+	//is password is also valid, send success
+	context.JSON(http.StatusOK, gin.H{"msg": "Successfully logged in!"})
+}
+
 func GetUserDetails(context *gin.Context) {
 	userId := context.Param("id")
 
