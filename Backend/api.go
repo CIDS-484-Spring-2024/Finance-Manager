@@ -1,14 +1,18 @@
 package main
 
+import "C"
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"restApi/Middleware"
 	"restApi/routes"
 )
 
 func main() {
 	const port = ":3200"
 	engine := gin.Default() //pointer to gin.engine
+	engine.Use(Middleware.CorsMiddleware())
+
 	//db := Mysqlconnection.NewDB()
 	//db.Start()
 	//startDB()

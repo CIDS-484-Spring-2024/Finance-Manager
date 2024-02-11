@@ -20,7 +20,8 @@ export class LoginComponent {
     this.userPassword = (event.target as HTMLInputElement).value;
   }
 
-  async validateLogin()  {
+  async validateLogin(event: Event)  {
+    event.preventDefault()
     let userCredentials = {"email":this.userEmail, "password":this.userPassword};
     fetch(endpoints.checkLogin, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
