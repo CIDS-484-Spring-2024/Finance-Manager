@@ -1,28 +1,59 @@
+
+
+.signupimg-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: calc(45% + 25px);
+}
+
+img {
+  max-width: 100%;
+}
+
+.signup-container {
+  background-color: black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 div#userSignUp {
-  background: #12e3e3;
-  /*display: inline-block;*/
-  /*vertical-align: top;*/
-  /*width:calc(25% + 50px);*/
-  /*max-width:calc(25% + 50px);*/
-  /*height: 100%;*/
+  margin-top: 5%;
+  margin-bottom: 5%;
+  /*background: #12e3e3;*/
+  background-image: linear-gradient(#fcfcfc, #2983fa);
+  width: calc(45% + 25px);
+  max-width: calc(45% + 25px);
+  justify-content: center;
+  display: flex;
+  align-items: center;
 
 }
 
-/*form {*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  justify-content: flex-end;*/
-/*  align-items: center;*/
-/*}*/
+form {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: calc(45% + 25px);
 
-/*div.form-wrapper1 {*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*  align-items: center;*/
-/*}*/
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
 
 input {
-  width: 25%;/*70%*/
+  width: 100%;
+  padding: 20px;
+  margin-top: 10%;
+  margin-bottom: 5%;
+  border: 2px solid #eee;
+  box-shadow:0 0 7px 3px gray;
+  border-radius: 20px;
+  font-family:inherit;
+  font-size: inherit;
 }
 
 p {
@@ -31,9 +62,15 @@ p {
 
 h1 {
   text-align: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 button {
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;}
+  align-items: center;
+  margin-top: 10%;
+  margin-bottom: 5%;
+}

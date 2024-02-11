@@ -1,18 +1,23 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<div class="userSignIn">
+<div class="login-container">
+<div id="userSignIn" class="row row-cols-1">
+
   <h1>Already a member?</h1>
+
+  <div class="loginimg-container">
+    <img src="../../assets/Login.png" alt="Welcome Back">
+  </div>
+
   <div class="form-wrapper">
 
   <form>
-<h3>Email</h3>
-<!--    <label for="username"> Email</label>-->
-    <input id="username" class="form-control">
-  <br>
-  <h3>Password</h3>
-  <input type="password" id="password" class="form-control">
-  <br><br>
-      <button class="btn btn-primary">Log In</button>
-    <br><br>
+    <div class="form-fields">
+      <input type="email" id="email" name="newEmail" placeholder="Email" minlength="10" class="form-control" (input)="emailLogin($event)">
+      <input  type="password" id="newpassword" placeholder="Password" minlength="7" name="newPswd" class="form-control" (input)="passwordLogin($event)">
+      <button class="btn btn-primary" (click)="validateLogin()">Log In</button>
+    </div>
   </form>
   </div>
 </div>
+</div>
+
