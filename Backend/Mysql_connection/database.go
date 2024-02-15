@@ -17,7 +17,7 @@ func NewDB() *DB {
 func (db *DB) Start() {
 
 	// establish connection with database                     goapi if root doesn't work
-	dbPtr, err := sql.Open("mysql", "root:go@tcp(10.201.77.238:3306)/financedbschema")
+	dbPtr, err := sql.Open("mysql", "root:dbadmin@tcp(100.67.232.84:3306)/financedbschema")
 	// If the database connection fails
 	if err != nil {
 		panic(err)
@@ -27,5 +27,4 @@ func (db *DB) Start() {
 	err = db.DbDriver.Ping()
 	fmt.Println("after ping: ", err)
 	//close the connection
-	defer dbPtr.Close()
 }
