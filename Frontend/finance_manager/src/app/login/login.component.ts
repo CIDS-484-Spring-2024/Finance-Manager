@@ -32,6 +32,6 @@ export class LoginComponent {
       redirect: "follow", // manual, *follow, error
       body: JSON.stringify(userCredentials), // body data type must match "Content-Type" header
     }).then(()=>{console.log("success")})
-      .catch(error => console.log(error))
+      .catch(error => console.log("an error occurred: ", error));
   }
 }

@@ -1,0 +1,6 @@
+POST http://localhost:3200/users/signup
+
+ {
+"email":"John",
+"password":"CarsAreCoolLOL",
+}

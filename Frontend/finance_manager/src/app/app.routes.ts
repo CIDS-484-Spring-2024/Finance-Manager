@@ -3,9 +3,11 @@ import { LoginComponent } from "./login/login.component";
 import { SignupComponent } from "./signup/signup.component";
 import {LandingPageComponent} from "./landing-page/landing-page.component";
 import {UserDetailsComponent} from "./user-details/user-details.component";
+import {AboutUsComponent} from "./about-us/about-us.component";
 
 export const routes: Routes = [{path: "login", component: LoginComponent},
                                {path:"signup", component: SignupComponent},
                                {path:"my-info", component: UserDetailsComponent},
+                               {path:"AboutUs", component: AboutUsComponent},
                                {path:"", component: LandingPageComponent}
 ];

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from "@angular/forms";
+import {endpoints} from "../api_urls/URL";
 
 
 @Component({
@@ -27,14 +28,35 @@ export class SignupComponent {
     this.spswd = (event.target as HTMLInputElement).value
   }
 
-  postData() {
+  async validateSignup(event: Event)  {
+    event.preventDefault()
+    //Only proceed if the passwords match.
+    if(this.passwordMatch()) {
+      let userCredentials = {"email": this.email, "password": this.pswd};
+      fetch(endpoints.signup, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, *cors, same-origin
+        headers: {
+          "Content-Type": "application/json",
+        },
+        redirect: "follow", // manual, *follow, error
+        body: JSON.stringify(userCredentials), // body data type must match "Content-Type" header
+      }).catch(error => console.log("an error occurred: ", error))
+        .then(response => console.log(response));
+
+    }
+  }
+
+  passwordMatch() {
+    let match: boolean = true;
     if(this.checkPswdMatch()) {
       this.pswdMatch = ""
-      console.log("PasswordsMatch")
     }
     else {
       this.pswdMatch = "Error: passwords don't match"
+      match = false;
     }
+    return match;
   }
 
   checkPswdMatch() {

@@ -1,10 +1,10 @@
 package main
 
-import "C"
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"restApi/Middleware"
+	Mysqlconnection "restApi/Mysql_connection"
 	"restApi/routes"
 )
 
@@ -13,8 +13,8 @@ func main() {
 	engine := gin.Default() //pointer to gin.engine
 	engine.Use(Middleware.CorsMiddleware())
 
-	//db := Mysqlconnection.NewDB()
-	//db.Start()
+	db := Mysqlconnection.NewDB()
+	db.Start()
 	//startDB()
 
 	//functions to be called when endpoint is accessed

@@ -3,6 +3,7 @@ package Mysqlconnection
 import (
 	"database/sql"
 	"fmt"
+	"github.com/go-sql-driver/mysql"
 	_ "github.com/go-sql-driver/mysql"
 )
 
@@ -16,16 +17,30 @@ func NewDB() *DB {
 
 func (db *DB) Start() {
 
-	// establish connection with database                     goapi if root doesn't work
-	dbPtr, err := sql.Open("mysql", "root:go@tcp(10.201.77.238:3306)/financedbschema")
+	//database configurations
+	config := mysql.Config{
+		User:   "root",
+		Passwd: "dbadmin",
+		Net:    "tcp",
+		Addr:   "100.67.232.84:3306",
+		DBName: "financedbschema",
+	}
+	//open database driver
+	myDB, err := sql.Open("mysql", config.FormatDSN())
+
+	// establish connection with database
 	// If the database connection fails
 	if err != nil {
 		panic(err)
 	}
 
-	db.DbDriver = dbPtr //update the driver variable
+	db.DbDriver = myDB //update the driver variable
 	err = db.DbDriver.Ping()
-	fmt.Println("after ping: ", err)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println("successfully pinged db!")
 	//close the connection
-	defer dbPtr.Close()
+	//defer myDB.Close()
 }

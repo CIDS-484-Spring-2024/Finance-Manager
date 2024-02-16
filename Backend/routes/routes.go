@@ -5,9 +5,13 @@ import (
 	"net/http"
 )
 
+type User struct {
+	email    string
+	password string
+}
+
 func SignUp(context *gin.Context) {
-	var user string
-	err := context.ShouldBindJSON(&user)
+	err := context.ShouldBindJSON()
 
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"error:": "Unable to obtain request body"})
@@ -20,7 +24,7 @@ func SignUp(context *gin.Context) {
 
 func Login(context *gin.Context) {
 	var credentials string
-	err := context.ShouldBindJSON(credentials)
+	err := context.ShouldBindJSON(&credentials)
 
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"err": "unable to parse input"})

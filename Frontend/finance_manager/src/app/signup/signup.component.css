@@ -12,7 +12,8 @@ img {
 }
 
 .signup-container {
-  background-color: black;
+  background-image: linear-gradient(#fcfcfc, #2983fa);
+  /*background-color: black;*/
   width: 100%;
   display: flex;
   justify-content: center;
