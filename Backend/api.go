@@ -13,13 +13,13 @@ func main() {
 	engine := gin.Default() //pointer to gin.engine
 	engine.Use(Middleware.CorsMiddleware())
 
-	db := Mysqlconnection.NewDB()
-	db.Start()
+	Mysqlconnection.Start()
 	//startDB()
 
 	//functions to be called when endpoint is accessed
 	engine.POST("/users/signup", routes.SignUp)
-	engine.POST("users/login", routes.Login)
+	engine.POST("/users/login", routes.Login)
+	engine.GET("/users/details", routes.GetAllUsers)
 	engine.GET("/users/finance/:id", routes.GetUserDetails)
 
 	err := engine.Run(port)

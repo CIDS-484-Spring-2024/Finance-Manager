@@ -1,0 +1,1 @@
+GET http://localhost:3200/users/details

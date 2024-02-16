@@ -1,24 +1,54 @@
 package routes
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	Mysqlconnection "restApi/Mysql_connection"
+	"restApi/Users"
+	"restApi/model"
 )
 
-type User struct {
-	email    string
-	password string
-}
-
 func SignUp(context *gin.Context) {
-	err := context.ShouldBindJSON()
+	var user Users.User
+	err := context.ShouldBindJSON(&user)
 
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"error:": "Unable to obtain request body"})
+		return
 	}
-	//add data to database
+
+	query := "INSERT INTO `financedbschema`.`userdata` (`FirstName`, `LastName`, `userID`, `email`, `maritalStatus`) VALUES ('Hugh', 'Jackman', '1', 'GoVikes', 'Single')"
+	_, err = Mysqlconnection.DbDriver.Exec(query)
+
+	if err != nil {
+		fmt.Println("Bro: ", err)
+		context.JSON(http.StatusInternalServerError, gin.H{"error:": "Unable to save data!"})
+		return
+	}
 	//upon successful operation
 	context.JSON(http.StatusOK, gin.H{"msg:": "user created successfuly!"})
+
+}
+
+func GetAllUsers(context *gin.Context) {
+	//wrap all non-keywords in single quotes
+	query := "SELECT * FROM 'financedbschema'.'userlogin'"
+	rows, err := Mysqlconnection.DbDriver.Query(query)
+
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"err: ": "Unable to retrieve user data!"})
+		return
+	}
+
+	userList, err := model.UserSearch(rows)
+
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"err: ": "Unable to parse user data!"})
+		return
+	}
+
+	context.JSON(http.StatusOK, gin.H{"users": userList})
 
 }
 

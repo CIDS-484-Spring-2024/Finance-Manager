@@ -1,0 +1,9 @@
+POST http://localhost:3200/users/signup
+content-type: application/json
+
+
+ {
+"salt": 5,
+"email":"John",
+"password":"CarsAreCoolLOL"
+}
