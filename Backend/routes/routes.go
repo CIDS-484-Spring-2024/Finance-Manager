@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	Mysqlconnection "restApi/Mysql_connection"
@@ -12,20 +11,18 @@ import (
 func SignUp(context *gin.Context) {
 	var user Users.User
 	err := context.ShouldBindJSON(&user)
+	user.Salt = 10 //salt that represents hashing algorithm
 
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"error:": "Unable to obtain request body"})
 		return
 	}
 
-	query := "INSERT INTO `financedbschema`.`userdata` (`FirstName`, `LastName`, `userID`, `email`, `maritalStatus`) VALUES ('Hugh', 'Jackman', '1', 'GoVikes', 'Single')"
-	_, err = Mysqlconnection.DbDriver.Exec(query)
-
+	err = model.SignUserUp(user)
 	if err != nil {
-		fmt.Println("Bro: ", err)
-		context.JSON(http.StatusInternalServerError, gin.H{"error:": "Unable to save data!"})
-		return
+		context.JSON(http.StatusInternalServerError, gin.H{"error:": "Unable to signup user"})
 	}
+
 	//upon successful operation
 	context.JSON(http.StatusOK, gin.H{"msg:": "user created successfuly!"})
 
@@ -53,16 +50,21 @@ func GetAllUsers(context *gin.Context) {
 }
 
 func Login(context *gin.Context) {
-	var credentials string
-	err := context.ShouldBindJSON(&credentials)
+	var user Users.User
+	err := context.ShouldBindJSON(&user)
 
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"err": "unable to parse input"})
+		return
 	}
 
-	//retrieve expected data
-	//assert email is as expected
-	//is password is also valid, send success
+	err = model.AuthenticateUser(user)
+
+	if err != nil {
+		context.JSON(http.StatusUnauthorized, gin.H{"err:": "Invalid login credentials"})
+		return
+	}
+
 	context.JSON(http.StatusOK, gin.H{"msg": "Successfully logged in!"})
 }
 
