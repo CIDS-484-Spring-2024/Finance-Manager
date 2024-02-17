@@ -11,20 +11,21 @@ import (
 func main() {
 
 	const port = ":3200"
-	engine := gin.Default() //pointer to gin.engine
+	//pointer to gin.engine
+	engine := gin.Default()
+	//middleware that enables frontend to access backend as it's on a different server
 	engine.Use(Middleware.CorsMiddleware())
-
+	//start database connection
 	Mysqlconnection.Start()
-	//startDB()
 
 	//functions to be called when endpoint is accessed
 	engine.POST("/users/signup", routes.SignUp)
 	engine.POST("/users/login", routes.Login)
 	engine.GET("/users/details", routes.GetAllUsers)
 	engine.GET("/users/finance/:id", routes.GetUserDetails)
-
+	//start server
 	err := engine.Run(port)
-
+	//if server cannot start
 	if err != nil {
 		panic("Cannot start backend: ")
 	}

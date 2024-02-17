@@ -3,7 +3,7 @@ content-type: application/json
 
 
  {
-"salt": 5,
-"email":"John",
-"password":"CarsAreCoolLOL"
+"Salt": 10,
+"Email":"John",
+"Password":"CarsAreCoolLOL"
 }

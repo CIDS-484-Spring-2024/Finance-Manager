@@ -21,6 +21,7 @@ func SignUp(context *gin.Context) {
 	err = model.SignUserUp(user)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"error:": "Unable to signup user"})
+		return
 	}
 
 	//upon successful operation
@@ -73,6 +74,7 @@ func GetUserDetails(context *gin.Context) {
 
 	if userId == "" {
 		context.JSON(http.StatusBadRequest, gin.H{"error:": "Unable to parse userID"})
+		return
 	}
 	//check if user is valid
 	//call database to retrieve information

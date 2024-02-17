@@ -22,14 +22,20 @@ func UserSearch(rows *sql.Rows) ([]Users.User, error) {
 }
 
 func SignUserUp(user Users.User) error {
-	query := "INSERT INTO `financedbschema`.`userlogin` ('Salt', 'Email', 'Password') VALUES ('?', '?', '?')"
+	query := "INSERT INTO `financedbschema`.`userlogin` ('email', 'passwordHash', 'passwordSalt') VALUES ('?', '?', '?')"
 	stmt, err := Mysqlconnection.DbDriver.Prepare(query)
 
 	if err != nil {
 		return err
 	}
 
-	_, err = stmt.Exec(user.Salt, user.Email, user.Password)
+	hashedPassword, err := Encryption.HashPasswordWithSalt(user.Password)
+
+	if err != nil {
+		return err
+	}
+
+	_, err = stmt.Exec(user.Email, hashedPassword, 10)
 
 	//this is valid, as it will be nil if everything goes as planned
 	return err
