@@ -1,0 +1,53 @@
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: black;
+  border-left: none;
+}
+
+h1 {
+  color: white;
+}
+
+
+form {
+  width: 75%;
+  background-color: #f2f5fa;
+  padding: 1%;
+}
+
+input {
+  border-bottom: 1px solid black;
+}
+
+#dependants {
+  border: 1px solid black;
+}
+
+div {
+  margin-bottom: 3%;
+  background-color: white;
+  padding: 3%;
+  border-left: 2px solid blue;
+}
+
+input#dependants {
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+
+
+

@@ -1,3 +1,118 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-<h1 style="display:flex; justify-content: center; align-items: center">Create an account or login to view!</h1>
+<div class="form-container">
+
+<h1 style="display:flex; justify-content: center; align-items: center">Tell us more about yourself!</h1>
+
+<form>
+  <div class="form-group">
+    <label for="fName">First Name</label>
+    <input id="fName" class="form-control" placeholder="Enter first name:">
+  </div>
+
+  <div class="form-group">
+    <label for="lName">Last Name</label>
+    <input id="lName" class="form-control" placeholder="Enter last name:">
+  </div>
+
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input type="number" id="age" class="form-control" placeholder="Enter your age:" min="12" max="120">
+  </div>
+
+  <div class="form-group">
+    <label for="state">state</label>
+    <select id="state" class="form-control form-control-lg">
+      <option value="AL">Alabama</option>
+      <option value="AK">Alaska</option>
+      <option value="AZ">Arizona</option>
+      <option value="AR">Arkansas</option>
+      <option value="CA">California</option>
+      <option value="CO">Colorado</option>
+      <option value="CT">Connecticut</option>
+      <option value="DE">Delaware</option>
+      <option value="DC">District Of Columbia</option>
+      <option value="FL">Florida</option>
+      <option value="GA">Georgia</option>
+      <option value="HI">Hawaii</option>
+      <option value="ID">Idaho</option>
+      <option value="IL">Illinois</option>
+      <option value="IN">Indiana</option>
+      <option value="IA">Iowa</option>
+      <option value="KS">Kansas</option>
+      <option value="KY">Kentucky</option>
+      <option value="LA">Louisiana</option>
+      <option value="ME">Maine</option>
+      <option value="MD">Maryland</option>
+      <option value="MA">Massachusetts</option>
+      <option value="MI">Michigan</option>
+      <option value="MN">Minnesota</option>
+      <option value="MS">Mississippi</option>
+      <option value="MO">Missouri</option>
+      <option value="MT">Montana</option>
+      <option value="NE">Nebraska</option>
+      <option value="NV">Nevada</option>
+      <option value="NH">New Hampshire</option>
+      <option value="NJ">New Jersey</option>
+      <option value="NM">New Mexico</option>
+      <option value="NY">New York</option>
+      <option value="NC">North Carolina</option>
+      <option value="ND">North Dakota</option>
+      <option value="OH">Ohio</option>
+      <option value="OK">Oklahoma</option>
+      <option value="OR">Oregon</option>
+      <option value="PA">Pennsylvania</option>
+      <option value="RI">Rhode Island</option>
+      <option value="SC">South Carolina</option>
+      <option value="SD">South Dakota</option>
+      <option value="TN">Tennessee</option>
+      <option value="TX">Texas</option>
+      <option value="UT">Utah</option>
+      <option value="VT">Vermont</option>
+      <option value="VA">Virginia</option>
+      <option value="WA">Washington</option>
+      <option value="WV">West Virginia</option>
+      <option value="WI">Wisconsin</option>
+      <option value="WY">Wyoming</option>
+<!--      outlying territories-->
+      <option value="AS">American Samoa</option>
+      <option value="GU">Guam</option>
+      <option value="MP">Northern Mariana Islands</option>
+      <option value="PR">Puerto Rico</option>
+      <option value="UM">United States Minor Outlying Islands</option>
+      <option value="VI">Virgin Islands</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="AGI">Annual Gross Income</label>
+    <input type="number" id="AGI" class="form-control" placeholder="Enter your annual gross income:" min="0">
+  </div>
+
+  <div class="form-group">
+    <label for="AME">Average monthly expenses</label>
+    <input type="number" id="AME" class="form-control" placeholder="Enter your average monthly expenses:" min="0">
+  </div>
+
+  <div class="form-check">
+    <label for="dependants" class="form-check-label">Dependants?</label>
+<!--    There is no error with ngModel, my application works just fine. Goland is simply freaking out-->
+    <input id="dependants" name="dependant" type="checkbox" class="form-check-input" [(ngModel)]="checkboxes[0].checked" (click)="checkboxSelection()" >
+  </div>
+
+  <div class="form-group" *ngIf="checkboxes[0].checked">
+    <label for="numDeps">Number of dependants</label>
+    <input type="number" id="numDeps" class="form-control" placeholder="# of dependants:" min="1">
+  </div>
+
+  <div class="form-group">
+    <label for="finGoals">What is your financial goal</label>
+    <input type="number" id="finGoals" class="form-control" placeholder="Eg. $1,000,000:" min="0">
+  </div>
+
+  <button class="btn btn-primary">Submit</button>
+
+</form>
+
+</div>
+
