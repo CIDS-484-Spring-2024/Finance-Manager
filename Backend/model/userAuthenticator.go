@@ -12,7 +12,7 @@ func UserSearch(rows *sql.Rows) ([]Users.User, error) {
 	var userSearchList []Users.User
 	for rows.Next() {
 		var user Users.User //reference to data at current row returned
-		err := rows.Scan(&user.Email, &user.Password, &user.Salt)
+		err := rows.Scan(&user.Email, &user.Password)
 		if err != nil {
 			return nil, err
 		}
@@ -22,7 +22,7 @@ func UserSearch(rows *sql.Rows) ([]Users.User, error) {
 }
 
 func SignUserUp(user Users.User) error {
-	query := "INSERT INTO `financedbschema`.`userlogin` ('email', 'passwordHash', 'passwordSalt') VALUES ('?', '?', '?')"
+	query := "INSERT INTO `financedbschema`.`userlogin` ('email', 'passwordHash') VALUES ('?', '?')"
 	stmt, err := Mysqlconnection.DbDriver.Prepare(query)
 
 	if err != nil {
@@ -35,7 +35,7 @@ func SignUserUp(user Users.User) error {
 		return err
 	}
 
-	_, err = stmt.Exec(user.Email, hashedPassword, 10)
+	_, err = stmt.Exec(user.Email, hashedPassword)
 
 	//this is valid, as it will be nil if everything goes as planned
 	return err

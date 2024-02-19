@@ -3,7 +3,6 @@ content-type: application/json
 
 
  {
-"Salt": 10,
 "Email":"John",
 "Password":"CarsAreCoolLOL"
 }

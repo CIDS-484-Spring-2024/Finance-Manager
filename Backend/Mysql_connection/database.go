@@ -30,6 +30,7 @@ func Start() {
 		panic(err)
 	}
 
+	//Confirm connection via ping
 	err = DbDriver.Ping()
 	if err != nil {
 		panic(err)

@@ -11,7 +11,6 @@ import (
 func SignUp(context *gin.Context) {
 	var user Users.User
 	err := context.ShouldBindJSON(&user)
-	user.Salt = 10 //salt that represents hashing algorithm
 
 	if err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"error:": "Unable to obtain request body"})
@@ -25,7 +24,7 @@ func SignUp(context *gin.Context) {
 	}
 
 	//upon successful operation
-	context.JSON(http.StatusOK, gin.H{"msg:": "user created successfuly!"})
+	context.JSON(http.StatusOK, gin.H{"msg:": "user created successfully!"})
 
 }
 
