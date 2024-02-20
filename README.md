@@ -15,6 +15,14 @@
 
 # Project Reports:
 
+# Current Progress as of 2/19/2024
+## Colton completed performance and logging updates in the database
+## Colton also updated the database to be more flexible with data and security
+## Randy styled the login, signup, account, and landing page while implementing routes
+## Randy also created rest api's that encrypt data and send and query data form the db
+## We both worked with the database to fix the api so the user can sign up and login successfully
+
+
 # Current Progress as of 2/7/2024
 ## So far Randy has completed a lot of the applications code and we are now onto the development of the network side of the program.
 ## Randy has been working on setting up the application to be able to connect to the database in order to run queries and procedures.
