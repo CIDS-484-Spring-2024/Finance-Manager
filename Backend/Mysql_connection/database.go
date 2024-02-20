@@ -13,8 +13,8 @@ func Start() {
 
 	//database configurations
 	config := mysql.Config{
-		User:                 "frandy",
-		Passwd:               "rfaudir8!",
+		User:                 "goapi",
+		Passwd:               "go",
 		Net:                  "tcp",
 		Addr:                 "100.67.232.84:3306",
 		DBName:               "financedbschema",

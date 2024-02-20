@@ -23,7 +23,8 @@ func UserSearch(rows *sql.Rows) ([]Users.User, error) {
 
 func SignUserUp(user Users.User) error {
 	//Prepare the query first to prevent a sql injection attack
-	query := "INSERT INTO `financedbschema`.`userlogin` ('email', 'passwordHash') VALUES ('?', '?')"
+	//query := "INSERT INTO `financedbschema`.`userlogin` ('email', 'passwordHash') VALUES ('?', '?')"
+	query := "INSERT INTO  financedbschema.userlogin (email, passwordHash) VALUES (?,?)"
 	stmt, err := Mysqlconnection.DbDriver.Prepare(query)
 
 	if err != nil {
@@ -44,7 +45,7 @@ func SignUserUp(user Users.User) error {
 
 func AuthenticateUser(user Users.User) error {
 	//search the database for the users password by matching their email
-	query := "SELECT 'Password' FROM `financedbschema`.`userlogin` WHERE Email= ?"
+	query := "SELECT passwordHash FROM financedbschema.userlogin WHERE Email= ?"
 	//initiate search
 	row := Mysqlconnection.DbDriver.QueryRow(query, user.Email)
 	//store the encrypted password
