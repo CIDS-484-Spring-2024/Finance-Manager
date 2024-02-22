@@ -30,7 +30,7 @@ func SignUp(context *gin.Context) {
 
 func GetAllUsers(context *gin.Context) {
 	//wrap all non-keywords in single quotes
-	query := "SELECT * FROM 'financedbschema'.'userlogin'"
+	query := "SELECT * FROM financedbschema.userlogin"
 	rows, err := Mysqlconnection.DbDriver.Query(query)
 
 	if err != nil {

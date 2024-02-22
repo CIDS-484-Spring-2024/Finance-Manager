@@ -7,11 +7,12 @@
   </div>
   <div class="form-wrapper1">
   <form class="container" name="signup-form">
-  <input type="email" id="email" name="newEmail" placeholder="Email" minlength="10" class="form-control" (input)="setEmail($event)">
+  <input type="email"  id="email" name="newEmail" placeholder="Email" minlength="10" class="form-control" (input)="setEmail($event)" required>
   <input  type="password" id="newpassword" placeholder="Password" minlength="7" name="newPswd" class="form-control" (input)="setNewPswd($event)">
   <input type="password" id="re-enterpswd" placeholder="Re-enter password" minlength="7" name="confirmNewPswd" class="form-control" (input)="setDuplicatePswd($event)">
-    <p [textContent]="pswdMatch"></p>
+    <p [textContent]="err"></p>
   <button type="submit" class="btn btn-primary" (click)="validateSignup($event)">Sign Up</button>
+    <h5 [textContent]="emptyFields"></h5>
     <br>
   </form>
   </div>

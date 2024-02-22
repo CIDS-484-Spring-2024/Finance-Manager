@@ -14,7 +14,8 @@ export class SignupComponent {
   email = ""
   pswd = ""
   spswd = ""
-  pswdMatch = ""
+  err = ""
+  emptyFields = ""
 
   setEmail(event: Event) {
     this.email = (event.target as HTMLInputElement).value
@@ -31,7 +32,7 @@ export class SignupComponent {
   async validateSignup(event: Event)  {
     event.preventDefault()
     //Only proceed if the passwords match.
-    if(this.passwordMatch()) {
+    if(this.passwordMatch() && !this.areFieldsEmpty()) {
       let userCredentials = {"email": this.email, "password": this.pswd};
       fetch(endpoints.signup, {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
@@ -50,10 +51,10 @@ export class SignupComponent {
   passwordMatch() {
     let match: boolean = true;
     if(this.checkPswdMatch()) {
-      this.pswdMatch = ""
+      this.err= ""
     }
     else {
-      this.pswdMatch = "Error: passwords don't match"
+      this.err = "Error: passwords don't match"
       match = false;
     }
     return match;
@@ -61,6 +62,13 @@ export class SignupComponent {
 
   checkPswdMatch() {
     return this.pswd === this.spswd;
+  }
+  areFieldsEmpty() {
+   if ( this.email === "" || this.pswd === "" || this.spswd === "") {
+     this.err = "Field(s) cannot be empty";
+     return true;
+   }
+   return false;
   }
 
 }

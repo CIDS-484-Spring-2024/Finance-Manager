@@ -25,7 +25,7 @@ div#userSignUp {
   margin-top: 5%;
   margin-bottom: 5%;
   /*background: #12e3e3;*/
-  background-image: linear-gradient(#fcfcfc, #2983fa);
+  /*background-image: linear-gradient(#fcfcfc, #2983fa);*/
   width: calc(45% + 25px);
   max-width: calc(45% + 25px);
   justify-content: center;

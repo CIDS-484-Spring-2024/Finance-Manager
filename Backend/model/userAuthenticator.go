@@ -3,6 +3,7 @@ package model
 import (
 	"database/sql"
 	"errors"
+	"fmt"
 	"restApi/Encryption"
 	Mysqlconnection "restApi/Mysql_connection"
 	"restApi/Users"
@@ -24,28 +25,33 @@ func UserSearch(rows *sql.Rows) ([]Users.User, error) {
 func SignUserUp(user Users.User) error {
 	//Prepare the query first to prevent a sql injection attack
 	//query := "INSERT INTO `financedbschema`.`userlogin` ('email', 'passwordHash') VALUES ('?', '?')"
-	query := "INSERT INTO  financedbschema.userlogin (email, passwordHash) VALUES (?,?)"
+	//query := "INSERT INTO  financedbschema.userlogin (email, passwordHash) VALUES (?,?)"
+	query := "CALL signUpUserProc(?,?);" //use procedure to protect database structure
+
 	stmt, err := Mysqlconnection.DbDriver.Prepare(query)
 
 	if err != nil {
+		fmt.Println("issue with preparation!")
 		return err
 	}
 
 	hashedPassword, err := Encryption.HashPasswordWithSalt(user.Password)
 
 	if err != nil {
+		fmt.Println("issue with encryption")
 		return err
 	}
 
 	_, err = stmt.Exec(user.Email, hashedPassword)
-
+	fmt.Println("execution status: ", err)
 	//this is valid, as it will be nil if everything goes as planned
 	return err
 }
 
 func AuthenticateUser(user Users.User) error {
 	//search the database for the users password by matching their email
-	query := "SELECT passwordHash FROM financedbschema.userlogin WHERE Email= ?"
+	//query := "SELECT passwordHash FROM financedbschema.userlogin WHERE Email= ?"
+	query := "CALL authUser(?)"
 	//initiate search
 	row := Mysqlconnection.DbDriver.QueryRow(query, user.Email)
 	//store the encrypted password
