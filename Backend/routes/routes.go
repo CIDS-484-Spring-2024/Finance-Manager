@@ -12,7 +12,7 @@ func SignUp(context *gin.Context) {
 	var user Users.User
 	err := context.ShouldBindJSON(&user)
 
-	if err != nil {
+	if err != nil || user.Email == "" || user.Password == "" {
 		context.JSON(http.StatusBadRequest, gin.H{"error:": "Unable to obtain request body"})
 		return
 	}
@@ -53,7 +53,7 @@ func Login(context *gin.Context) {
 	var user Users.User
 	err := context.ShouldBindJSON(&user)
 
-	if err != nil {
+	if err != nil || user.Email == "" || user.Password == "" {
 		context.JSON(http.StatusBadRequest, gin.H{"err": "unable to parse input"})
 		return
 	}
