@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import {endpoints} from "../api_urls/URL";
-
+import {CallAPIService} from "../call-api.service";
 
 @Component({
   selector: 'app-signup',
   standalone: true,
   imports: [FormsModule],
+  providers: [CallAPIService],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
+
+  constructor(private apiCall: CallAPIService) {
+  }
   email = ""
   pswd = ""
   spswd = ""
@@ -33,18 +37,8 @@ export class SignupComponent {
     event.preventDefault()
     //Only proceed if the passwords match.
     if(this.passwordMatch() && !this.areFieldsEmpty()) {
-      let userCredentials = {"email": this.email, "password": this.pswd};
-      fetch(endpoints.signup, {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, *cors, same-origin
-        headers: {
-          "Content-Type": "application/json",
-        },
-        redirect: "follow", // manual, *follow, error
-        body: JSON.stringify(userCredentials), // body data type must match "Content-Type" header
-      }).catch(error => console.log("an error occurred: ", error))
-        .then(response => console.log(response));
-
+      let userCredentials = {"Email": this.email, "Password": this.pswd};
+      this.apiCall.postData(userCredentials, endpoints.signup)
     }
   }
 
