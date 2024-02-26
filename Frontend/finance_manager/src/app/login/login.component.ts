@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {endpoints} from "../api_urls/URL";
 import {CallAPIService} from "../call-api.service";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-login',
@@ -30,6 +31,6 @@ export class LoginComponent {
   async validateLogin(event: Event)  {
     event.preventDefault()
     let userCredentials = {"Email":this.userEmail, "Password":this.userPassword};
-    this.apiCall.postData(userCredentials, endpoints.checkLogin);
+    this.apiCall.postUserAuthData(userCredentials, endpoints.checkLogin);
   }
 }

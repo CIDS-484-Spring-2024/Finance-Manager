@@ -38,7 +38,7 @@ export class SignupComponent {
     //Only proceed if the passwords match.
     if(this.passwordMatch() && !this.areFieldsEmpty()) {
       let userCredentials = {"Email": this.email, "Password": this.pswd};
-      this.apiCall.postData(userCredentials, endpoints.signup)
+      this.apiCall.postUserAuthData(userCredentials, endpoints.signup)
     }
   }
 
