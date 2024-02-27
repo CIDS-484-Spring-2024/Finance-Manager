@@ -14,6 +14,7 @@
     <div class="form-fields">
       <input type="email" id="email" name="newEmail" placeholder="Email" minlength="10" class="form-control" (input)="emailLogin($event)">
       <input  type="password" id="newpassword" placeholder="Password" minlength="7" name="newPswd" class="form-control" (input)="passwordLogin($event)">
+      <p [textContent]="this.session.loginError"></p>
       <button class="btn btn-primary" (click)="validateLogin($event)">Log In</button>
     </div>
   </form>

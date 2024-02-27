@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import {endpoints} from "../api_urls/URL";
-import {CallAPIService} from "../call-api.service";
-import {AuthService} from "../auth.service";
+import {CallAPIService} from "../services/call-api.service";
+import {AuthService} from "../services/auth.service";
+import {SessionManagerService} from "../services/session-manager.service";
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ import {AuthService} from "../auth.service";
 })
 export class LoginComponent {
 //Here I'm injecting the CallAPIService dependency
-  constructor(private apiCall: CallAPIService) {
+  constructor(private apiCall: CallAPIService, public session: SessionManagerService) {
 
   }
 

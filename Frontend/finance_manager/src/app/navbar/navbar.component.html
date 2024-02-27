@@ -19,8 +19,8 @@
   </div>
 
   <ul class="nav navbar-nav navbar-right" style="display: inline-block;">
-    <li><a routerLink="/signup" routerLinkActive="active" ariaCurrentWhenActive="page"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-    <li><a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    <li *ngIf="!auth.isLoggedIn" id="signup"><a routerLink="/signup" routerLinkActive="active" ariaCurrentWhenActive="page"><span class="glyphicon glyphicon-user"></span>Sign up</a></li>
+    <li><a (click)="LogUserOut()" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page"><span class="glyphicon glyphicon-log-in" [textContent]="this.session.loginorouttext"></span></a></li>
   </ul>
 </div>
 </nav>

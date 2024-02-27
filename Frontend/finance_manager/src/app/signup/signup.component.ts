@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import {endpoints} from "../api_urls/URL";
-import {CallAPIService} from "../call-api.service";
+import {CallAPIService} from "../services/call-api.service";
+import {SessionManagerService} from "../services/session-manager.service";
 
 @Component({
   selector: 'app-signup',
@@ -13,13 +14,12 @@ import {CallAPIService} from "../call-api.service";
 })
 export class SignupComponent {
 
-  constructor(private apiCall: CallAPIService) {
+  constructor(private apiCall: CallAPIService, public session: SessionManagerService) {
   }
   email = ""
   pswd = ""
   spswd = ""
-  err = ""
-  emptyFields = ""
+
 
   setEmail(event: Event) {
     this.email = (event.target as HTMLInputElement).value
@@ -45,10 +45,10 @@ export class SignupComponent {
   passwordMatch() {
     let match: boolean = true;
     if(this.checkPswdMatch()) {
-      this.err= ""
+      this.session.loginError= ""
     }
     else {
-      this.err = "Error: passwords don't match"
+      this.session.loginError = "Error: passwords don't match"
       match = false;
     }
     return match;
@@ -59,7 +59,7 @@ export class SignupComponent {
   }
   areFieldsEmpty() {
    if ( this.email === "" || this.pswd === "" || this.spswd === "") {
-     this.err = "Field(s) cannot be empty";
+     this.session.loginError = "Field(s) cannot be empty";
      return true;
    }
    return false;
