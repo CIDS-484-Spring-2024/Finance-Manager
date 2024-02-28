@@ -15,6 +15,12 @@
 
 # Project Reports:
 
+# Current Progress as of 2/28/2024
+## Randy enabled user login and signup through Angular components
+## Randy and Colton enhanced authentication throughout the full stack
+## Colton created stored procedures for use on the database and API
+## Colton also enabled SSL on the database and increased security
+
 # Current Progress as of 2/19/2024
 ## Colton completed performance and logging updates in the database
 ## Colton also updated the database to be more flexible with data and security
