@@ -1,3 +1,32 @@
-p {
-  color: red;
+.aboutus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+
+
+
+}
+.pContainer {
+  width: 75%;
+  background-color: #faf7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+.paragraph1. .paragraph2, .paragrah3, .paragraph4 {
+padding: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.paragraph3 {
+  margin-bottom: 3%;
 }
