@@ -3,9 +3,11 @@
   justify-content: center;
   align-items: center;
   margin-top: 6%;
+  overflow-x: hidden;
+  /*width: 100vw;*/
 }
 .pContainer {
-  width: 75%;
+  width: 70vw;
   background-color: #faf7f7;
   display: flex;
   justify-content: center;
@@ -16,11 +18,11 @@
   padding-left: 2%;
   padding-right: 2%;
 }
-.paragraph1. .paragraph2, .paragraph3, .paragraph4 {
+.paragraph1, .paragraph2, .paragraph3, .paragraph4 {
 padding: 2%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
 
 }
 
