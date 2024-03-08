@@ -3,9 +3,6 @@
   justify-content: center;
   align-items: center;
   margin-top: 5%;
-
-
-
 }
 .pContainer {
   width: 75%;
@@ -19,7 +16,7 @@
   padding-left: 2%;
   padding-right: 2%;
 }
-.paragraph1. .paragraph2, .paragrah3, .paragraph4 {
+.paragraph1. .paragraph2, .paragraph3, .paragraph4 {
 padding: 2%;
   display: flex;
   justify-content: center;
