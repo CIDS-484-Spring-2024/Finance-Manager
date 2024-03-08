@@ -23,6 +23,9 @@ func main() {
 	engine.POST("/users/login", routes.Login)
 	engine.GET("/users/details", routes.GetAllUsers)
 	engine.GET("/users/finance/:id", routes.GetUserDetails)
+
+	//endpoints related to form processing
+	engine.POST("/form/postDetails", routes.StoreUserFormDetails)
 	//start server
 	err := engine.Run(port)
 	//if server cannot start

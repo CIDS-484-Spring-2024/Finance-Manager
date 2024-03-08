@@ -3,6 +3,7 @@ package routes
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"restApi/Forms"
 	Mysqlconnection "restApi/Mysql_connection"
 	"restApi/Users"
 	"restApi/model"
@@ -79,4 +80,25 @@ func GetUserDetails(context *gin.Context) {
 	//call database to retrieve information
 	//upon successful retrieval
 	context.JSON(http.StatusOK, gin.H{"content:": "data will go here"})
+}
+
+func StoreUserFormDetails(context *gin.Context) {
+	//create reference to forms struct and populate accordingly
+	var form Forms.Forms
+	err := context.ShouldBindJSON(&form)
+
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"Error:": "unable to parse data"})
+		return
+	}
+
+	err = model.StoreForm(form)
+
+	if err != nil {
+		context.JSON(http.StatusInternalServerError, gin.H{"err:": "unable to store info "})
+		return
+	}
+
+	context.JSON(http.StatusOK, gin.H{"Success": "Form data saved!"})
+
 }

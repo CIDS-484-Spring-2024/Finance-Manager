@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {FormsModule, NgForm} from "@angular/forms";
 import { CommonModule } from '@angular/common'
 import {NgModule} from "@angular/core";
+import {CallAPIService} from "../services/call-api.service";
 // import {BrowserModule} from "@angular/platform-browser";
 @Component({
   selector: 'app-user-details',
@@ -11,6 +12,9 @@ import {NgModule} from "@angular/core";
   styleUrl: './user-details.component.css'
 })
 export class UserDetailsComponent {
+
+  constructor(private callAPI: CallAPIService) {
+  }
 
   checkboxes = [
     {id:"dependants", name:"dependant", checked: false}
@@ -26,17 +30,25 @@ export class UserDetailsComponent {
     AME : "",
     numDependants : 0,
     finGoal : 0,
+    dependants: false
   }
+ currentDate = new Date()
+  currentYear = this.currentDate.getFullYear() + 1
+  minYear = this.currentDate.getFullYear() - 40
+
 
 
   checkboxSelection() {
     this.checkboxes[0].checked = !this.checkboxes[0].checked;
+    this.finForm.dependants = this.checkboxes[0].checked;
 }
 
 submitForm() {
-    console.log("button pressed")
- console.log(this.finForm.firstname);
+   this.callAPI
+
 }
+
+
 
 
 }
