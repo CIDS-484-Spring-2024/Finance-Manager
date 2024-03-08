@@ -1,0 +1,16 @@
+POST http://localhost:3200/form/postDetails
+content-type: application/json
+
+{
+  "FirstName": "Colton",
+  "LastName": "BigDawg",
+  "Year": 2024,
+  "Maritalstatus": "Single",
+  "State": "WI",
+  "AGI": 10000.0,
+  "AME": 100000.0,
+  "NumDependents": 0,
+  "FinGoal": 1000000,
+  "Dependents": false,
+  "Email": "anthony"
+}

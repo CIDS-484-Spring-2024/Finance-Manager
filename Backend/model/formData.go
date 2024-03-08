@@ -12,6 +12,20 @@ func StoreForm(form Forms.Forms) error {
 	if err != nil {
 		return err
 	}
+	_, err = stmt.Exec(form.Email, form.FirstName, form.LastName, form.Maritalstatus)
 
-	//return response
+	if err != nil {
+		return err
+	}
+	//prepare user financial data
+	query = "CALL inputFinanceData(?,?,?,?,?,?,?)"
+	stmt, err = Mysqlconnection.DbDriver.Prepare(query)
+
+	if err != nil {
+		return err
+	}
+
+	_, err = stmt.Exec(form.Email, form.Year, form.AME, form.AGI, form.Dependents, form.NumDependents, form.FinGoal)
+
+	return err //return final status
 }

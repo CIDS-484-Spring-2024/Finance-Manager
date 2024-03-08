@@ -6,8 +6,8 @@ type Forms struct {
 	Year          int
 	Maritalstatus string
 	State         string
-	AGI           string
-	AME           string
+	AGI           float64
+	AME           float64
 	NumDependents int
 	FinGoal       int
 	Dependents    bool

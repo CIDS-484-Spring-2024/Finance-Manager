@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"restApi/Forms"
@@ -88,6 +89,7 @@ func StoreUserFormDetails(context *gin.Context) {
 	err := context.ShouldBindJSON(&form)
 
 	if err != nil {
+		fmt.Println(err)
 		context.JSON(http.StatusBadRequest, gin.H{"Error:": "unable to parse data"})
 		return
 	}
@@ -95,6 +97,7 @@ func StoreUserFormDetails(context *gin.Context) {
 	err = model.StoreForm(form)
 
 	if err != nil {
+		fmt.Println(err)
 		context.JSON(http.StatusInternalServerError, gin.H{"err:": "unable to store info "})
 		return
 	}
