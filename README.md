@@ -1,7 +1,7 @@
 # Finance-Manager
 
 # Authors
-## Randy Franzmeier and Colton Williams
+ Randy Franzmeier and Colton Williams
 
 ## With Financial Advisory Help From John Fritzke
 
