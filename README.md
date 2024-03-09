@@ -6,7 +6,8 @@
  With Financial Advisory Help From John Fritzke
 
 # Overview
-## This application will take in user financial information, and display results based off of their needs. Ideally, the user will login or create an account, be able to manage their finances, and even recieve tips.
+ This application will take in user financial information, and display results based off of their needs.
+ Ideally, the user will login or create an account, be able to manage their finances, and even recieve tips.
 
 # Tech stack
  * Frontend: Angular
@@ -28,8 +29,8 @@
 * Randy created the post request to store form data in the database
 * Randy filled out and styled the about us page from John's writing
 * Colton created stored procedures and tables to hold form information
-* Colton helped write logic for the user form POST API
-* Colton created backup for database with an email account, as well
+* Colton helped write logic for the user form POST API endpoint
+* Colton created a backup for the database with an email account, as well
   as management through Percona.
 
 # Current Progress as of 2/28/2024
