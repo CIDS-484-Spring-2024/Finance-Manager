@@ -2,15 +2,15 @@ POST http://localhost:3200/form/postDetails
 content-type: application/json
 
 {
-  "FirstName": "Colton",
-  "LastName": "BigDawg",
-  "Year": 2024,
-  "Maritalstatus": "Single",
-  "State": "WI",
-  "AGI": 10000.0,
-  "AME": 100000.0,
-  "NumDependents": 0,
-  "FinGoal": 1000000,
-  "Dependents": false,
-  "Email": "anthony"
+  "FirstName": "george",
+  "LastName": "bush",
+  "Year": 2004,
+  "Maritalstatus": "Married",
+  "State": "DC",
+  "AGI": 10000000.0,
+  "AME": 10000.0,
+  "NumDependents": 2,
+  "FinGoal": 10,
+  "Dependents": true,
+  "Email": "georgebush"
 }
