@@ -30,6 +30,7 @@ export class NavbarComponent implements OnInit{
 
   ngOnInit() {
     this.session.loginorouttext =  this.auth.isLoggedIn? " Logout": " Login";
+    localStorage.removeItem('isLoggedIn');
   }
 
   LogUserOut() {
