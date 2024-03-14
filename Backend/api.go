@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"restApi/Middleware"
 	Mysqlconnection "restApi/Mysql_connection"
@@ -24,10 +23,14 @@ func main() {
 		users.POST("/signup", routes.SignUp)
 		users.POST("/login", routes.Login)
 		users.GET("/details", routes.GetAllUsers)
-		users.GET("/finance/:id", routes.GetUserDetails)
 	}
-	//endpoints related to form processing
-	engine.POST("/form/postDetails", routes.StoreUserFormDetails)
+	//form group endpoints
+	form := engine.Group("/form")
+	{
+		form.GET("/getForm/:email", routes.GetFormDetails)
+		form.POST("/postDetails", routes.StoreUserFormDetails)
+	}
+
 	//start server
 	err := engine.Run(port)
 	//if server cannot start

@@ -1,6 +1,7 @@
 package model
 
 import (
+	"fmt"
 	"restApi/Forms"
 	Mysqlconnection "restApi/Mysql_connection"
 )
@@ -28,4 +29,31 @@ func StoreForm(form Forms.Forms) error {
 	_, err = stmt.Exec(form.Email, form.Year, form.AME, form.AGI, form.Dependents, form.NumDependents, form.FinGoal)
 
 	return err //return final status
+}
+
+func GetFormData(email string) Forms.Forms {
+	//return struct
+	var userForm Forms.Forms
+	userForm.Email = email
+	//query to obtain string using stored procedure
+	query := "CALL getFinanceData(?)"
+	row := Mysqlconnection.DbDriver.QueryRow(query, email)
+
+	err := row.Scan(&userForm.Email, &userForm.Year, &userForm.AME, &userForm.AGI, &userForm.Dependents, &userForm.NumDependents, &userForm.FinGoal)
+
+	if err != nil {
+		fmt.Println("problem scanning rows!")
+		return Forms.Forms{}
+	}
+	//Now we need to obtain the firstname, lastname, and filing status
+	query = "CALL getUserInfo(?)"
+	row = Mysqlconnection.DbDriver.QueryRow(query, email)
+
+	err = row.Scan(&userForm.FirstName, &userForm.LastName, &userForm.Maritalstatus)
+	if err != nil {
+		fmt.Println("problem scanning rows!")
+		return Forms.Forms{}
+	}
+
+	return userForm
 }

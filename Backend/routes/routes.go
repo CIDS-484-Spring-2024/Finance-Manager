@@ -70,17 +70,21 @@ func Login(context *gin.Context) {
 	context.JSON(http.StatusOK, gin.H{"Success! logged in user:": user.Email})
 }
 
-func GetUserDetails(context *gin.Context) {
-	userId := context.Param("id")
+func GetFormDetails(context *gin.Context) {
+	email := context.Param("email")
 
-	if userId == "" {
-		context.JSON(http.StatusBadRequest, gin.H{"error:": "Unable to parse userID"})
+	if email == "" {
+		context.JSON(http.StatusBadRequest, gin.H{"error:": "Unable to parse email"})
 		return
 	}
-	//check if user is valid
-	//call database to retrieve information
-	//upon successful retrieval
-	context.JSON(http.StatusOK, gin.H{"content:": "data will go here"})
+	userFormData := model.GetFormData(email)
+
+	if userFormData.FirstName == "" || userFormData.State == "" {
+		context.JSON(http.StatusInternalServerError, gin.H{"error:": "Unable to retrieve user form info"})
+		return
+	}
+
+	context.JSON(http.StatusOK, gin.H{"data": userFormData})
 }
 
 func StoreUserFormDetails(context *gin.Context) {
