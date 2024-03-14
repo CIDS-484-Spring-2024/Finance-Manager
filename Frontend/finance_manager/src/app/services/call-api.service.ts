@@ -10,16 +10,27 @@ export class CallAPIService {
 
   constructor(private auth: AuthService, private router: Router, private session: SessionManagerService) {}
   errorCodes = [400, 401, 500];
-  email: string = ""
 
   async postFormData(formObj: any, path: string ) {
-    formObj.email = this.email; //add the users email
-
+    formObj.email = localStorage.getItem('email'); //add the users email
+    localStorage.removeItem('email');
+    //post to backend
+    await fetch(path,{
+      method: "POST",
+      mode: "cors", // no-cors, *cors, same-origin
+      headers: {
+        "Content-Type": "application/json",
+      },
+      redirect: "follow", // manual, *follow, error
+      body: JSON.stringify(formObj), // body data type must match "Content-Type" header )
+  }).then(res => {
+    console.log("status:" + res.status);
+    })
   }
 
   async postUserAuthData(dataObj: any, path: string) {
     let userCredentials = {"Email":dataObj.Email, "Password":dataObj.Password};
-    this.email = userCredentials.Email
+    localStorage.setItem('email', userCredentials.Email);
      await fetch(path, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, *cors, same-origin

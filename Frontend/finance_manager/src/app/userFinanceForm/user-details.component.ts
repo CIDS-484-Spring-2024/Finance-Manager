@@ -3,9 +3,10 @@ import {FormsModule, NgForm} from "@angular/forms";
 import { CommonModule } from '@angular/common'
 import {NgModule} from "@angular/core";
 import {CallAPIService} from "../services/call-api.service";
+import {endpoints} from "../api_urls/URL";
 // import {BrowserModule} from "@angular/platform-browser";
 @Component({
-  selector: 'app-user-details',
+  selector: 'app-userFinanceForm',
   standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './user-details.component.html',
@@ -30,7 +31,8 @@ export class UserDetailsComponent {
     AME : "",
     numDependants : 0,
     finGoal : 0,
-    dependants: false
+    dependants: false,
+    email: ""
   }
  currentDate = new Date()
   currentYear = this.currentDate.getFullYear() + 1
@@ -44,8 +46,7 @@ export class UserDetailsComponent {
 }
 
 submitForm() {
-   this.callAPI
-
+   this.callAPI.postFormData(this.finForm, endpoints.postForm)
 }
 
 

@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from "./login/login.component";
 import { SignupComponent } from "./signup/signup.component";
 import {LandingPageComponent} from "./landing-page/landing-page.component";
-import {UserDetailsComponent} from "./user-details/user-details.component";
+import {UserDetailsComponent} from "./userFinanceForm/user-details.component";
 import {AboutUsComponent} from "./about-us/about-us.component";
 import {userinfoGuard} from "./userinfo.guard";
 import {leadGuardGuard} from "./lead-guard.guard";

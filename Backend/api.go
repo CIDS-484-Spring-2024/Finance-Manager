@@ -18,12 +18,14 @@ func main() {
 	//start database connection
 	Mysqlconnection.Start()
 
-	//functions to be called when endpoint is accessed
-	engine.POST("/users/signup", routes.SignUp)
-	engine.POST("/users/login", routes.Login)
-	engine.GET("/users/details", routes.GetAllUsers)
-	engine.GET("/users/finance/:id", routes.GetUserDetails)
-
+	//user group endpoints
+	users := engine.Group("/users")
+	{
+		users.POST("/signup", routes.SignUp)
+		users.POST("/login", routes.Login)
+		users.GET("/details", routes.GetAllUsers)
+		users.GET("/finance/:id", routes.GetUserDetails)
+	}
 	//endpoints related to form processing
 	engine.POST("/form/postDetails", routes.StoreUserFormDetails)
 	//start server
