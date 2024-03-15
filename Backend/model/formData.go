@@ -13,7 +13,7 @@ func StoreForm(form Forms.Forms) error {
 	if err != nil {
 		return err
 	}
-	_, err = stmt.Exec(form.Email, form.FirstName, form.LastName, form.Maritalstatus)
+	_, err = stmt.Exec(form.Email, form.FirstName, form.LastName, form.Maritalstatus, form.State)
 
 	if err != nil {
 		return err
@@ -39,8 +39,8 @@ func GetFormData(email string) Forms.Forms {
 	query := "CALL getFinanceData(?)"
 	row := Mysqlconnection.DbDriver.QueryRow(query, email)
 
-	err := row.Scan(&userForm.Email, &userForm.Year, &userForm.AME, &userForm.AGI, &userForm.Dependents, &userForm.NumDependents, &userForm.FinGoal)
-
+	err := row.Scan(&userForm.Year, &userForm.AME, &userForm.AGI, &userForm.Dependents, &userForm.NumDependents, &userForm.FinGoal)
+	fmt.Println(err)
 	if err != nil {
 		fmt.Println("problem scanning finance data rows!")
 		return Forms.Forms{}
