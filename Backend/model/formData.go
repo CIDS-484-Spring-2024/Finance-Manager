@@ -42,18 +42,18 @@ func GetFormData(email string) Forms.Forms {
 	err := row.Scan(&userForm.Email, &userForm.Year, &userForm.AME, &userForm.AGI, &userForm.Dependents, &userForm.NumDependents, &userForm.FinGoal)
 
 	if err != nil {
-		fmt.Println("problem scanning rows!")
+		fmt.Println("problem scanning finance data rows!")
 		return Forms.Forms{}
 	}
 	//Now we need to obtain the firstname, lastname, and filing status
 	query = "CALL getUserInfo(?)"
 	row = Mysqlconnection.DbDriver.QueryRow(query, email)
 
-	err = row.Scan(&userForm.FirstName, &userForm.LastName, &userForm.Maritalstatus)
+	err = row.Scan(&userForm.FirstName, &userForm.LastName, &userForm.Maritalstatus, &userForm.State)
+	fmt.Println(err)
 	if err != nil {
-		fmt.Println("problem scanning rows!")
+		fmt.Println("problem scanning personal data rows!")
 		return Forms.Forms{}
 	}
-
 	return userForm
 }
