@@ -1,0 +1,19 @@
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chartContainer {
+  width: 40vw;
+}
+
+
+p {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding-right: 1%;
+}
