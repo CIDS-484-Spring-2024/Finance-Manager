@@ -1,11 +1,13 @@
+<!--This is the view for the finance form the user fills out after signing in-->
+<!--There is also no error with ngModel, my application works just fine. Goland is simply freaking out-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
 <div class="form-container">
 
 <h1 style="display:flex; justify-content: center; align-items: center">Tell us more about yourself!</h1>
-<!--  #userForm="ngForm" (ngSubmit)="submitForm(userForm)" ngNativeValidate-->
+<!--  ngNativeValidate allows HTML input validation without restriction/deprecation-->
 <form (submit)="submitForm()" ngNativeValidate>
-<!--  {{userForm.value | json}}-->
+<!-- The [(ngModel)]="?" is a form of two way data binding that updates the value of whatever it's set to-->
   <div class="form-group">
     <label for="fName">First Name</label>
     <input id="fName" name="firstname" class="form-control" placeholder="Enter first name:" [(ngModel)]="finForm.firstname" required>
@@ -109,11 +111,11 @@
 
   <div class="form-check">
     <label for="dependants" class="form-check-label">Dependants?</label>
-<!--    There is no error with ngModel, my application works just fine. Goland is simply freaking out-->
     <input id="dependants" name="dependants" type="checkbox" class="form-check-input"
            [(ngModel)]="checkboxes[0].checked" (click)="checkboxSelection()" >
   </div>
 
+<!--  This only shows if the user actually has dependants-->
   <div class="form-group" *ngIf="checkboxes[0].checked">
     <label for="numDeps">Number of dependants</label>
     <input type="number" name="numberDependants" id="numDeps" class="form-control"

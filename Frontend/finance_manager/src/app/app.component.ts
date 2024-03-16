@@ -6,7 +6,8 @@ import { FormsModule } from "@angular/forms";
 import {NavbarComponent} from "./navbar/navbar.component";
 import {LandingPageComponent} from "./landing-page/landing-page.component";
 import {UserDetailsComponent} from "./userFinanceForm/user-details.component";
-
+/* This is where it all comes together. I'm importing all my components into this
+* component.*/
 @Component({
   selector: 'app-root',
   standalone: true,

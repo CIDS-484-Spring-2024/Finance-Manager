@@ -7,6 +7,11 @@ import {AboutUsComponent} from "./about-us/about-us.component";
 import {userinfoGuard} from "./userinfo.guard";
 import {leadGuardGuard} from "./lead-guard.guard";
 
+/**
+ * This is the routes array. Each path corresponds to a component.
+ * Additionally, There's guards so the user can't access routes if
+ * they aren't authorized.*/
+
 export const routes: Routes = [{path: "login", component: LoginComponent},
                                {path:"signup", component: SignupComponent, canActivate: [leadGuardGuard]},
                                {path:"my-info", component: UserDetailsComponent, canActivate: [userinfoGuard]},

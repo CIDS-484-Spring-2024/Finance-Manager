@@ -1,3 +1,5 @@
+/*Styles for about us page. this includes containers and flexbox*/
+
 .aboutus {
   display: flex;
   justify-content: center;
