@@ -9,6 +9,7 @@ import (
 	"restApi/Users"
 )
 
+// UserSearch takes in rows and adds each one to a list
 func UserSearch(rows *sql.Rows) ([]Users.User, error) {
 	var userSearchList []Users.User
 	for rows.Next() {
@@ -22,6 +23,8 @@ func UserSearch(rows *sql.Rows) ([]Users.User, error) {
 	return userSearchList, nil
 }
 
+// SignUserUp takes in a user struct and enters their data into the database.
+// For obvious reasons, their password is first encrypted.
 func SignUserUp(user Users.User) error {
 	//Prepare the query first to prevent a sql injection attack
 	//query := "INSERT INTO `financedbschema`.`userlogin` ('email', 'passwordHash') VALUES ('?', '?')"
@@ -34,23 +37,23 @@ func SignUserUp(user Users.User) error {
 		fmt.Println("issue with preparation!")
 		return err
 	}
-
+	//encrypt their password
 	hashedPassword, err := Encryption.HashPasswordWithSalt(user.Password)
 
 	if err != nil {
 		fmt.Println("issue with encryption")
 		return err
 	}
-
+	//execute the query with the email and hashed password
 	_, err = stmt.Exec(user.Email, hashedPassword)
-	fmt.Println("execution status: ", err)
-	//this is valid, as it will be nil if everything goes as planned
+	//this is valid, as "err" will be nil if everything goes as planned
 	return err
 }
 
+// AuthenticateUser searches the database for the users password by matching their email.
+// It then checks if the passwords match. If so, the user is successfully logged in.
 func AuthenticateUser(user Users.User) error {
-	//search the database for the users password by matching their email
-	//query := "SELECT passwordHash FROM financedbschema.userlogin WHERE Email= ?"
+	//Get password
 	query := "CALL authUser(?)"
 	//initiate search
 	row := Mysqlconnection.DbDriver.QueryRow(query, user.Email)
@@ -61,7 +64,7 @@ func AuthenticateUser(user Users.User) error {
 	if err != nil {
 		return errors.New("unable to retrieve stored password")
 	}
-
+	//return status of password match
 	if !Encryption.PasswordsMatch(user.Password, storedPswd) {
 		return errors.New("Passwords don't match")
 	}

@@ -2,6 +2,7 @@ package Middleware
 
 import "github.com/gin-gonic/gin"
 
+// CorsMiddleware Allows specified client side API calls to be accepted
 func CorsMiddleware() gin.HandlerFunc {
 	return func(context *gin.Context) {
 		//set the correct headers, so they don't get blocked by CORS
@@ -15,7 +16,6 @@ func CorsMiddleware() gin.HandlerFunc {
 			context.AbortWithStatus(204)
 			return
 		}
-
 		context.Next()
 	}
 }

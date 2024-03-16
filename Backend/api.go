@@ -1,5 +1,6 @@
 package main
 
+//This is the main file where the server and database connections start.
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
@@ -42,12 +43,3 @@ func main() {
 	fmt.Println("server started!")
 
 }
-
-//
-//func startDB() {
-//	db := Mysqlconnection.NewDB()
-//	err := db.Start()
-//	if err != nil {
-//		panic("error connecting to colton's db")
-//	}
-//}

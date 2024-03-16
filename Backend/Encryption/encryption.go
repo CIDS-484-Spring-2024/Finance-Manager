@@ -17,6 +17,9 @@ func HashPasswordWithSalt(password string) (string, error) {
 	return string(hashedPassword), nil
 }
 
+// PasswordMatch takes the plaintext password and the hashed one. It then
+// compares the two to see if they are the same. If they are, the function will
+// return nil for the "error". Otherwise they don't match.
 func PasswordsMatch(password, hashedPassword string) bool {
 	err := bcrypt.CompareHashAndPassword([]byte(hashedPassword), []byte(password))
 	return err == nil

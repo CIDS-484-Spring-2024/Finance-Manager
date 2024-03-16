@@ -13,6 +13,7 @@ func StoreForm(form Forms.Forms) error {
 	if err != nil {
 		return err
 	}
+	//execute the prepared query with the provided data
 	_, err = stmt.Exec(form.Email, form.FirstName, form.LastName, form.Maritalstatus, form.State)
 
 	if err != nil {
@@ -25,7 +26,7 @@ func StoreForm(form Forms.Forms) error {
 	if err != nil {
 		return err
 	}
-
+	//execute this query with the provided data
 	_, err = stmt.Exec(form.Email, form.Year, form.AME, form.AGI, form.Dependents, form.NumDependents, form.FinGoal)
 
 	return err //return final status
@@ -34,11 +35,12 @@ func StoreForm(form Forms.Forms) error {
 func GetFormData(email string) Forms.Forms {
 	//return struct
 	var userForm Forms.Forms
-	userForm.Email = email
-	//query to obtain string using stored procedure
+	userForm.Email = email //assign email to struct
+
+	//query to obtain row data using stored procedure
 	query := "CALL getFinanceData(?)"
 	row := Mysqlconnection.DbDriver.QueryRow(query, email)
-
+	//Set the struct fields with the values obtained by the query.
 	err := row.Scan(&userForm.Year, &userForm.AME, &userForm.AGI, &userForm.Dependents, &userForm.NumDependents, &userForm.FinGoal)
 	fmt.Println(err)
 	if err != nil {
@@ -49,11 +51,13 @@ func GetFormData(email string) Forms.Forms {
 	query = "CALL getUserInfo(?)"
 	row = Mysqlconnection.DbDriver.QueryRow(query, email)
 
+	//Set the struct fields with the values obtained by the query.
 	err = row.Scan(&userForm.FirstName, &userForm.LastName, &userForm.Maritalstatus, &userForm.State)
 	fmt.Println(err)
 	if err != nil {
 		fmt.Println("problem scanning personal data rows!")
 		return Forms.Forms{}
 	}
+	//On successful query and struct population
 	return userForm
 }
