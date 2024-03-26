@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Chart, LinearScale, BarController, CategoryScale, BarElement, DoughnutController, ArcElement, Legend} from "chart.js";
+import {Chart, LinearScale, BarController, CategoryScale, BarElement, DoughnutController, ArcElement, Legend, Title} from "chart.js";
 import { BaseChartDirective } from 'ng2-charts';
 
 @Component({
@@ -12,7 +12,7 @@ import { BaseChartDirective } from 'ng2-charts';
 export class FinGraphComponent implements OnInit{
   constructor() {
     //register chart elements so they're provided in the DOM
-    Chart.register(LinearScale, BarController, CategoryScale, BarElement, DoughnutController, ArcElement, Legend);
+    Chart.register(LinearScale, BarController, CategoryScale, BarElement, DoughnutController, ArcElement, Legend, Title);
 
   }
   ngOnInit() {
@@ -24,14 +24,17 @@ export class FinGraphComponent implements OnInit{
       labels: [
         'Monthly Expenses',
         'Annual Gross Income',
+        'Fun money'
       ],
       datasets: [{
         label: 'My Finances',
-        data: [175, 300],
+        //Expenses and Earnings, respectively
+        data: [48000, 59000, 11000],
         //style specifications
         backgroundColor: [
           'rgb(255,0,53)',
           'rgb(0,255,19)',
+          'rgb(0,8,244)'
         ],
         borderWidth: [5],
         hoverOffset: 4
@@ -43,6 +46,15 @@ export class FinGraphComponent implements OnInit{
       new Chart(graph, {
         type: 'doughnut',
         data: chartData,
+        // options: {
+        //   plugins: {
+        //     title: {
+        //       display: true,
+        //       text: "Expense-to-Earnings",
+        //       fullSize: true
+        //     }
+        //   }
+        // }
       })
     }
   }
