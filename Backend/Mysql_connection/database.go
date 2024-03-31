@@ -13,8 +13,8 @@ func Start() {
 
 	//database configurations
 	config := mysql.Config{
-		User:                 "root",     //root
-		Passwd:               "roottest", //roottest
+		User:                 "root",
+		Passwd:               "roottest",
 		Net:                  "tcp",
 		Addr:                 "127.0.0.1",
 		DBName:               "financedbschema",
