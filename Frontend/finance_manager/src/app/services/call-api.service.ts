@@ -13,7 +13,7 @@ export class CallAPIService {
 
   async postFormData(formObj: any, path: string ) {
     formObj.email = localStorage.getItem('email'); //add the users email
-    localStorage.removeItem('email');
+   // localStorage.removeItem('email');
     //post to backend
     await fetch(path,{
       method: "POST",

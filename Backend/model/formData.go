@@ -40,7 +40,6 @@ func GetFormData(email string) Forms.Forms {
 	row := Mysqlconnection.DbDriver.QueryRow(query, email)
 
 	err := row.Scan(&userForm.Year, &userForm.AME, &userForm.AGI, &userForm.Dependents, &userForm.NumDependents, &userForm.FinGoal)
-	fmt.Println(err)
 	if err != nil {
 		fmt.Println("problem scanning finance data rows!")
 		return Forms.Forms{}
@@ -50,7 +49,6 @@ func GetFormData(email string) Forms.Forms {
 	row = Mysqlconnection.DbDriver.QueryRow(query, email)
 
 	err = row.Scan(&userForm.FirstName, &userForm.LastName, &userForm.Maritalstatus, &userForm.State)
-	fmt.Println(err)
 	if err != nil {
 		fmt.Println("problem scanning personal data rows!")
 		return Forms.Forms{}
