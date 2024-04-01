@@ -9,12 +9,12 @@
 .chartContainer {
   margin-top: 5%;
   width: 50vw;
-  background-color: #d7d4d4;
+  /*background-color: #c6c6c9;*/
+  border-left: 5px solid black;
 }
 .user-finance-display {
   margin-top: 5%;
   width: 50vw;
-  background-color: #000000;
 }
 
 #graph-title {
@@ -36,10 +36,19 @@ p.user-display {
   justify-content: left;
   align-items: center;
   padding-left: 3%;
-  color: white;
   font-weight: bold;
   font-size: 250%;
-  margin-bottom: 8%;
+  color: #338fdc;
+  /*color: #0dcaf0*/
+}
+
+p.user-result {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding-left: 3%;
+  font-size: 250%;
+  margin-bottom: 5%;
 }
 
 p#user-name {
