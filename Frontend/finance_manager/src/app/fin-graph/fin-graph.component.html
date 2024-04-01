@@ -4,22 +4,30 @@
 
 <!--  Area to display the users financial information-->
 <div class="user-finance-display">
-  <p class="user-display">Annual Gross Income: $59,000</p>
-  <p class="user-display">Monthly expenses: $4,000</p>
-  <p class="user-display">Tax year: 2023</p>
-  <p class="user-display">State: Texas</p>
-  <p class="user-display">Filing status: single</p>
-  <p class="user-display">Financial goal: $4,000,000</p>
+  <p class="user-display">Annual Gross Income</p>
+  <p class="user-result" [textContent]="this.AGI"></p>
+  <p class="user-display">Monthly expenses</p>
+  <p class="user-result" [textContent]="monthlyExpenses"></p>
+  <p class="user-display">Tax year</p>
+  <p class="user-result" [textContent]="taxYear"></p>
+  <p class="user-display">State</p>
+  <p class="user-result" [textContent]="UsState"></p>
+  <p class="user-display">Filing status</p>
+  <p class="user-result" [textContent]="filingStatus"></p>
+  <p class="user-display">Financial goal</p>
+  <p class="user-result" [textContent]="goal"></p>
 
 </div>
 <!--Chart to display Financial Information-->
 <div class="chartContainer">
-  <p id="user-name">Welcome, John Fritzke</p>
-  <h1 id="graph-title" style="display: flex; justify-content: center; align-items: center;">Your Lunar Ledger</h1>
+  <p id="user-name" [textContent]="fullname"></p>
+  <h1 id="graph-title" style="display: flex; justify-content: center; align-items: center;">Moon Money Management</h1>
   <canvas id="userChart">
   </canvas>
-  <p class="ratio"> Expense/Earnings: 81% </p>
-  <p class="ratio">Expense/Earnings level: dangerous</p>
+  <p class="ratio"> Expense/Earnings</p>
+  <p class="ratio" [textContent]="EERatio"></p>
+  <p class="ratio">Expense/Earnings level</p>
+  <p class="ratio" [textContent]="ratioLevel"></p>
 </div>
 
 </div>

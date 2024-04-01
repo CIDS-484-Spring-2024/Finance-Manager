@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {Chart, LinearScale, BarController, CategoryScale, BarElement, DoughnutController, ArcElement, Legend, Title} from "chart.js";
 import { BaseChartDirective } from 'ng2-charts';
+import {CommonModule} from "@angular/common";
 
 @Component({
   selector: 'app-fin-graph',
   standalone: true,
-  imports: [BaseChartDirective],
+  imports: [BaseChartDirective, CommonModule],
   templateUrl: './fin-graph.component.html',
   styleUrl: './fin-graph.component.css'
 })
@@ -13,9 +14,22 @@ export class FinGraphComponent implements OnInit{
   constructor() {
     //register chart elements so they're provided in the DOM
     Chart.register(LinearScale, BarController, CategoryScale, BarElement, DoughnutController, ArcElement, Legend, Title);
-
   }
+
+  //Variables used to display the users finance information
+  AGI = 56000;
+  monthlyExpenses = 4000;
+  taxYear = 2023;
+  UsState = "Texas";
+  filingStatus = "single";
+  goal = 4000000;
+  fullname = "Welcome, John Fritzke";
+  EERatio = (((this.monthlyExpenses * 12)/this.AGI)*100).toFixed(2) + "%";
+  ratioLevel = this.getRatioLevel(this.monthlyExpenses*12, this.AGI);
+
+
   ngOnInit() {
+
      //graph html element we'll use to inject data into
      let graph = document.getElementById("userChart")
 
@@ -34,7 +48,7 @@ export class FinGraphComponent implements OnInit{
         backgroundColor: [
           'rgb(255,0,53)',
           'rgb(0,255,19)',
-          'rgb(0,8,244)'
+          '#338fdc'
         ],
         borderWidth: [5],
         hoverOffset: 4
@@ -57,6 +71,20 @@ export class FinGraphComponent implements OnInit{
         // }
       })
     }
+  }
+
+  getRatioLevel (expenses: number, earnings: number) {
+    let ratio = ((expenses/earnings)*100);
+
+    if(ratio <= 20) {return "Very Healthy"}
+
+    else if (ratio <= 40) {return "Healthy"}
+
+    else if (ratio <= 60) {return "Unhealthy"}
+
+    else if (ratio <= 80) {return "Very Unhealthy"}
+
+    else {return "Dangerous"}
   }
 
 
