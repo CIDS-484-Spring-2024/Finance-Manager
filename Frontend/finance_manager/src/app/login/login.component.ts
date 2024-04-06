@@ -30,7 +30,7 @@ export class LoginComponent {
   }
 
   async validateLogin(event: Event)  {
-    event.preventDefault()
+     event.preventDefault()
     let userCredentials = {"Email":this.userEmail, "Password":this.userPassword};
     this.apiCall.postUserAuthData(userCredentials, endpoints.checkLogin);
   }

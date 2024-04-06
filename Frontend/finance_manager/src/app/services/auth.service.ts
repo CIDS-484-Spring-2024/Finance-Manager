@@ -11,6 +11,7 @@ export class AuthService {
   constructor() { }
 
   isLoggedIn: boolean = localStorage.getItem('isLoggedIn') === "true" || false;
+  isFormComplete = false;
 
   login(email: string): Observable<boolean> {
     //check to see if user is logged in

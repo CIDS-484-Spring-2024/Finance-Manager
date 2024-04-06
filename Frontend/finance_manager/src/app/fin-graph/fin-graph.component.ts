@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Chart, LinearScale, BarController, CategoryScale, BarElement, DoughnutController, ArcElement, Legend, Title} from "chart.js";
 import { BaseChartDirective } from 'ng2-charts';
 import {CommonModule} from "@angular/common";
+import {SessionManagerService} from "../services/session-manager.service";
 
 @Component({
   selector: 'app-fin-graph',
@@ -11,19 +12,19 @@ import {CommonModule} from "@angular/common";
   styleUrl: './fin-graph.component.css'
 })
 export class FinGraphComponent implements OnInit{
-  constructor() {
+  constructor(private session: SessionManagerService) {
     //register chart elements so they're provided in the DOM
     Chart.register(LinearScale, BarController, CategoryScale, BarElement, DoughnutController, ArcElement, Legend, Title);
   }
 
   //Variables used to display the users finance information
-  AGI = 56000;
-  monthlyExpenses = 4000;
-  taxYear = 2023;
-  UsState = "Texas";
-  filingStatus = "single";
-  goal = 4000000;
-  fullname = "Welcome, John Fritzke";
+  AGI = this.session.AGI;
+  monthlyExpenses = this.session.monthlyExpenses;
+  taxYear = this.session.taxYear;
+  UsState = this.session.UsState;
+  filingStatus = this.session.filingStatus;
+  goal = this.session.goal;
+  fullname = this.session.fullname;
   EERatio = (((this.monthlyExpenses * 12)/this.AGI)*100).toFixed(2) + "%";
   ratioLevel = this.getRatioLevel(this.monthlyExpenses*12, this.AGI);
 
@@ -43,7 +44,7 @@ export class FinGraphComponent implements OnInit{
       datasets: [{
         label: 'My Finances',
         //Expenses and Earnings, respectively
-        data: [48000, 59000, 11000],
+        data: [this.monthlyExpenses * 12, this.AGI, this.AGI - (this.monthlyExpenses * 12)],
         //style specifications
         backgroundColor: [
           'rgb(255,0,53)',

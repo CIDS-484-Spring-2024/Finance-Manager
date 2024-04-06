@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "./auth.service";
 import {SessionManagerService} from "./session-manager.service";
+import {endpoints} from "../api_urls/URL";
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,30 @@ export class CallAPIService {
       redirect: "follow", // manual, *follow, error
       body: JSON.stringify(formObj), // body data type must match "Content-Type" header )
   }).then(res => {
-    console.log("status:" + res.status);
+      if (res.ok) {
+        console.log("posted form successfully")
+        this.auth.isFormComplete = true;
+        this.getUserGraphInformation();
+      }
+    })
+  }
+
+  async getUserGraphInformation() {
+    console.log("made it to get request!")
+    //get the email
+    let userEmail = localStorage.getItem('email');
+    //get the information from the backend
+    await fetch(endpoints.getUserDetails + userEmail, {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      }
+    }).then( async res => {
+      res = await res.json();
+      // @ts-ignore
+      const {data} = res; //getting the block of user info from the backend
+      this.session.populateUserInfo(data)
     })
   }
 
