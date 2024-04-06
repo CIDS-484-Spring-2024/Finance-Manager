@@ -14,6 +14,7 @@ export class AuthService {
 
   //variable to check login status
   isLoggedIn: boolean = localStorage.getItem('isLoggedIn') === "true" || false;
+  isFormComplete = false;
 
 
 /*This function is used to check if the user is logged in. It then stores the status
