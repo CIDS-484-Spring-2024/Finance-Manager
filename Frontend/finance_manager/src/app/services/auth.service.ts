@@ -11,7 +11,8 @@ export class AuthService {
   constructor() { }
 
   isLoggedIn: boolean = localStorage.getItem('isLoggedIn') === "true" || false;
-  isFormComplete = false;
+  //TODO Have this be updated correctly so the title is correctly displayed on the navbar
+  isFormComplete = this.isLoggedIn? localStorage.getItem('auth') === 'true': false;
 
   login(email: string): Observable<boolean> {
     //check to see if user is logged in
