@@ -27,6 +27,7 @@ export class CallAPIService {
   }).then(res => {
       if (res.ok) {
         console.log("posted form successfully")
+        localStorage.setItem('auth', 'true');
         this.auth.isFormComplete = true;
         this.getUserGraphInformation();
       }
