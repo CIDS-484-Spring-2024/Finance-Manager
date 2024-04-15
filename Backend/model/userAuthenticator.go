@@ -50,7 +50,6 @@ func SignUserUp(user Users.User) error {
 
 func AuthenticateUser(user Users.User) error {
 	//search the database for the users password by matching their email
-	//query := "SELECT passwordHash FROM financedbschema.userlogin WHERE Email= ?"
 	query := "CALL authUser(?)"
 	//initiate search
 	row := Mysqlconnection.DbDriver.QueryRow(query, user.Email)
@@ -66,4 +65,21 @@ func AuthenticateUser(user Users.User) error {
 		return errors.New("Passwords don't match")
 	}
 	return nil
+}
+
+// Function used to check if the user filled out a form
+func HasCompletedForm(email string) int {
+	var formStatus int
+	//search the status of the form completion
+	query := "CALL getFormStatus(?)"
+	row := Mysqlconnection.DbDriver.QueryRow(query, email)
+
+	err := row.Scan(&formStatus)
+
+	//return 0 because data cannot be queried
+	if err != nil {
+		return 0
+	}
+	return formStatus
+
 }
