@@ -52,6 +52,7 @@ func GetAllUsers(context *gin.Context) {
 func Login(context *gin.Context) {
 	var user Users.User
 	err := context.ShouldBindJSON(&user)
+	//TODO add logic to call database and check if user completed form
 
 	if err != nil || user.Email == "" || user.Password == "" {
 		context.JSON(http.StatusBadRequest, gin.H{"err": "unable to parse input"})
@@ -64,6 +65,10 @@ func Login(context *gin.Context) {
 		context.JSON(http.StatusUnauthorized, gin.H{"err:": "Invalid login credentials"})
 		return
 	}
+	//check if the user completed the form
+	formStatus := model.HasCompletedForm(user.Email)
+	//return as a struct so it can easily be converted to a JSON object
+	retStruct := Users.UserReturn{Email: user.Email, HasCompletedForm: formStatus}
 
-	context.JSON(http.StatusOK, gin.H{"Success! logged in user:": user.Email})
+	context.JSON(http.StatusOK, gin.H{"data": retStruct})
 }
