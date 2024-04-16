@@ -35,7 +35,6 @@ export class CallAPIService {
   }
 
   async getUserGraphInformation() {
-    console.log("made it to get request!")
     //get the email
     let userEmail = localStorage.getItem('email');
     //get the information from the backend
@@ -66,14 +65,24 @@ export class CallAPIService {
       body: JSON.stringify(userCredentials), // body data type must match "Content-Type" header
     }).then(res => {
        if(res.status === 200) {
+         //log user in on frontend
          this.auth.login(userCredentials.Email).subscribe(
-           data => {
+           async data => {
              console.log("login status: " + data);
+             //if correctly logged in
              if (data) {
-               //localStorage.setItem("email", userCredentials.Email)
+               res = await res.json();
+               // @ts-ignore
+               const {data} = res; //getting the block of user info from the backend
                //navigate to correct page and switch text to logout
                this.session.loginorouttext = " Logout"
-               this.router.navigate(['/my-info'])
+               console.log(data.HasCompletedForm, " and ", typeof(data.HasCompletedForm))
+               if(data.HasCompletedForm === 1) {
+                await this.getUserGraphInformation()
+               }
+               else {
+                 this.router.navigate(['/my-info'])
+               }
              }
 
            });}
