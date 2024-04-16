@@ -8,12 +8,12 @@ import (
 
 func StoreForm(form Forms.Forms) error {
 	//obtain stored procedure and enter into db, note there are two tables
-	query := "CALL inputUserData(?,?,?,?,?)"
+	query := "CALL inputUserData(?,?,?,?,?,?)"
 	stmt, err := Mysqlconnection.DbDriver.Prepare(query)
 	if err != nil {
 		return err
 	}
-	_, err = stmt.Exec(form.Email, form.FirstName, form.LastName, form.Maritalstatus, form.State)
+	_, err = stmt.Exec(form.Email, form.FirstName, form.LastName, form.Maritalstatus, form.State, 1)
 
 	if err != nil {
 		return err
@@ -42,6 +42,7 @@ func GetFormData(email string) Forms.Forms {
 	err := row.Scan(&userForm.Year, &userForm.AME, &userForm.AGI, &userForm.Dependents, &userForm.NumDependents, &userForm.FinGoal)
 	if err != nil {
 		fmt.Println("problem scanning finance data rows!")
+		fmt.Println("ErRoR:", err)
 		return Forms.Forms{}
 	}
 	//Now we need to obtain the firstname, lastname, and filing status
@@ -51,6 +52,7 @@ func GetFormData(email string) Forms.Forms {
 	err = row.Scan(&userForm.FirstName, &userForm.LastName, &userForm.Maritalstatus, &userForm.State)
 	if err != nil {
 		fmt.Println("problem scanning personal data rows!")
+		fmt.Println("ErRoR:", err)
 		return Forms.Forms{}
 	}
 	return userForm
