@@ -22,9 +22,12 @@ func SignUp(context *gin.Context) {
 		context.JSON(http.StatusInternalServerError, gin.H{"error:": "Unable to signup user"})
 		return
 	}
+	//format for the frontend to be able to parse the info correctly
+	//Since the user is new, it's impossible that they completed the form.
+	retStruct := Users.UserReturn{Email: user.Email, HasCompletedForm: 0}
 
 	//upon successful operation
-	context.JSON(http.StatusOK, gin.H{"msg:": "user created successfully!"})
+	context.JSON(http.StatusOK, gin.H{"data": retStruct})
 
 }
 
