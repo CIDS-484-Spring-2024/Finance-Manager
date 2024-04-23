@@ -1,0 +1,39 @@
+# Major Database Activity will be logged here from now on.
+- As of previous, was only message about on Discord between 2 Partners and/or Was Spoken About from Person to Person
+- Tweaks may or may not be included but tuning was done every week to be done coinciding with new features to the site.
+- This log doesn't include the time needed to learn different things which took up a majority of many of the weeks (85-90% of the time)
+
+## DB Log as of 1/27/2024
+Constructed a plan for the database and some sample queries to run.
+
+## DB Log as of 2/7/2024
+Constructed and has been running the MySQL Database on a Local Server successfully connecting between 2 machines.
+Constructed a final procedural setup for easier input of data and is working on writing queries for the application to run when connected to the database.
+Worked on more security features and is focusing on a salt-hash password encrytion system in order to follow modern security standards for database and web development.
+
+## DB Log as of 2/19/2024
+Completed performance and logging updates in the database
+Updated the database to be more flexible with data and security
+
+## DB Log as of 2/28/2024
+Created stored procedures for use on the database and API
+Enabled SSL on the database and increased security
+
+## DB Log as of 3/9/2024
+Created stored procedures and tables to hold form information
+Created a backup for the database with an email account, as well as management through Percona.
+
+## DB Log as of 3/29/2024
+Created stored procedure for obtaining the finance data
+Set up the SQL database in Azure
+
+## DB Log as of 4/6/2024
+Due to a virus that required a system wipe, this weeks work was catch up in getting back to where we were previously.
+
+## DB Log as of 4/13/2024
+Worked on user profiles to have better security and less permissions that were more than what was needed.
+
+## DB Log as of 4/20/2024
+Updated to allow for 2FA for DB sign-on
+Reformatted Memory Allocation for Procedures to align with previous update to memory caching
+Updated folder to allow for encryption of sensitive log files of database to prevent attackers from gaining access.
