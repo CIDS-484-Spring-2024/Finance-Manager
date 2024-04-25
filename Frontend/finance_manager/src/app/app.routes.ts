@@ -8,6 +8,7 @@ import {userinfoGuard} from "./userinfo.guard";
 import {leadGuardGuard} from "./lead-guard.guard";
 import {FinGraphComponent} from "./fin-graph/fin-graph.component";
 
+
 export const routes: Routes = [{path: "login", component: LoginComponent},
                                {path:"signup", component: SignupComponent, canActivate: [leadGuardGuard]},
                                {path:"my-info", component: UserDetailsComponent, canActivate: [userinfoGuard]},

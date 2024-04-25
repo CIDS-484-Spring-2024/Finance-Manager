@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, of} from 'rxjs';
 import {tap, delay} from 'rxjs/operators';
-import {Router} from "@angular/router";
-import {SessionManagerService} from "./session-manager.service";
+
+/* This is an injectable decorator. It's meant for use
+* in components by injecting it into their constructor. The class contains
+* variable and functions accessible to the component it's injected into. */
 @Injectable({
   providedIn: 'root'
 })
@@ -10,18 +12,21 @@ export class AuthService {
 
   constructor() { }
 
+  //variable to check login status
   isLoggedIn: boolean = localStorage.getItem('isLoggedIn') === "true" || false;
   //TODO Have this be updated correctly so the title is correctly displayed on the navbar
   isFormComplete = this.isLoggedIn? localStorage.getItem('auth') === 'true': false;
 
+
+/*This function is used to check if the user is logged in. It then stores the status
+* in local storage and returns a boolean Observable*/
   login(email: string): Observable<boolean> {
     //check to see if user is logged in
     this.isLoggedIn = !(email === null || email === "");
-    console.log("email: " + email + "is logged in? " + this.isLoggedIn)
     //enter the status
     localStorage.setItem('isLoggedIn', this.isLoggedIn? "true": "false" );
     //return a boolean observable, piping the delay function and
-    //log together. Observables are used to handle async operations
+    //tap operator together. Observables are used to handle async operations
     //and streams of data.
     return of(this.isLoggedIn).pipe(
       delay(1000),
@@ -31,6 +36,8 @@ export class AuthService {
     )
   }
 
+  //This function simply logs the user out by changing the status
+  //and deleting the item from local storage.
   logout() {
     this.isLoggedIn = false;
     localStorage.removeItem("isLoggedIn");

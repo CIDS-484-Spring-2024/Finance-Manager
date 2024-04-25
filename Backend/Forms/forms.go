@@ -1,5 +1,6 @@
 package Forms
 
+// Forms /* This struct stores all the fields related to the finance form.
 type Forms struct {
 	FirstName     string
 	LastName      string

@@ -1,3 +1,4 @@
+<!--This is the view for the signup component-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <div class="signup-container">
 <div id="userSignUp" class="row row-cols-1">
@@ -6,10 +7,13 @@
     <img src="../../assets/Signup.jpg" alt="Welcome to Moon Money">
   </div>
   <div class="form-wrapper1">
-  <form class="container" name="signup-form">
+  <form class="container" name="signup-form" ngNativeValidate>
+<!--  In addition to binding the input data to the model, there are also tags like minlength to make sure
+      the user enters input that's long enough-->
   <input type="email"  id="email" name="newEmail" placeholder="Email" minlength="10" class="form-control" (input)="setEmail($event)" required>
   <input  type="password" id="newpassword" placeholder="Password" minlength="7" name="newPswd" class="form-control" (input)="setNewPswd($event)">
   <input type="password" id="re-enterpswd" placeholder="Re-enter password" minlength="7" name="confirmNewPswd" class="form-control" (input)="setDuplicatePswd($event)">
+<!--  Any errors pertaining to login or sign up will show here   -->
     <p [textContent]="this.session.loginError"></p>
   <button type="submit" class="btn btn-primary" (click)="validateSignup($event)">Sign Up</button>
     <br>

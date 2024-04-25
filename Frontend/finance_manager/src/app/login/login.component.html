@@ -1,3 +1,4 @@
+<!-- This page is the template for the login component -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <div class="login-container">
 <div id="userSignIn" class="row row-cols-1">
@@ -10,11 +11,14 @@
 
   <div class="form-wrapper">
 
-  <form>
+  <form ngNativeValidate>
     <div class="form-fields">
+      <!--   The (input) = "" is an example of event binding. This calls the function provided when the event is triggered   -->
       <input type="email" id="email" name="newEmail" placeholder="Email" minlength="10" class="form-control" (input)="emailLogin($event)">
       <input  type="password" id="newpassword" placeholder="Password" minlength="7" name="newPswd" class="form-control" (input)="passwordLogin($event)">
+      <!--   this is an example of property binding. It takes the value from the model and injects it here in the view   -->
       <p [textContent]="this.session.loginError"></p>
+      <!--   Button to login if all criteria passes   -->
       <button class="btn btn-primary" (click)="validateLogin($event)">Log In</button>
     </div>
   </form>

@@ -1,3 +1,4 @@
+//This file organizes the api endpoints into a JSON object
 export const endpoints =
 {
   'checkLogin':'http://localhost:3200/users/login',

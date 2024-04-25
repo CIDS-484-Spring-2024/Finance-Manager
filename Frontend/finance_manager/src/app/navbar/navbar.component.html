@@ -1,14 +1,10 @@
-
-<!--<nav class="navbar navbar-light" style="background-color: white;">-->
-<!--  <a class="navbar-brand" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>Home</strong></a>-->
-<!--  <a class="navbar-brand" routerLink="/my-info" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>My Info</strong></a>-->
-<!--  <a class="navbar-brand" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>Login</strong></a>-->
-<!--  <a class="navbar-brand" routerLink="/signup" routerLinkActive="active" ariaCurrentWhenActive="page">Signup</a>-->
-<!--</nav>-->
+<!-- This is the view for the navbar. It used bootstrap to style the elements and be responsive -->
 
 <nav class="navbar">
 <div class="container-fluid">
   <div class="navbar-header navbar-left">
+    <!-- Strong tag makes elements appear bolder -->
+<!--    Each routerLink="?" defines the path to the corresponding page. "/" is the default landing page.-->
     <a class="navbar-brand" routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>Moon Money</strong></a>
   </div>
   <div class="nav navbar-nav" style="display: inline-block">
@@ -22,8 +18,14 @@
   </div>
 
   <ul class="nav navbar-nav navbar-right" style="display: inline-block;">
-    <li><a (click)="LogUserOut()" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page"><span class="glyphicon glyphicon-log-in" [textContent]="this.session.loginorouttext"></span></a></li>
-    <li *ngIf="!auth.isLoggedIn" id="signup"><a routerLink="/signup" routerLinkActive="active" ariaCurrentWhenActive="page"><span class="glyphicon glyphicon-user"></span>Sign up</a></li>
+<!-- This is the area where the user either logs in or signs up. However, theres a catch.
+ We don't want the user to see login or signup when they're already logged in. If they're not logged in,
+ they both show. If they are logged in, the logged in text switches to "log out", and the sign up
+ disappears. This is possible with property and data binding.-->
+    <li><a (click)="LogUserOut()" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">
+      <span class="glyphicon glyphicon-log-in" [textContent]="this.session.loginorouttext"></span></a></li>
+    <li *ngIf="!auth.isLoggedIn" id="signup"><a routerLink="/signup" routerLinkActive="active"
+                                                ariaCurrentWhenActive="page"><span class="glyphicon glyphicon-user"></span>Sign up</a></li>
   </ul>
 </div>
 </nav>
