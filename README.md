@@ -24,6 +24,14 @@
 
 # Project Reports:
 
+# Current Progress as of 3/29/24
+* Randy and Colton figured out how to store the form in the database
+* Randy and Colton made working REST API's to store and get the form data
+* Randy figured out how to style and insert data into a doughnut chart using Chart.js
+* Randy implemented styling for the users finance graph/ projections page
+* Colton created stored procedure for obtaining the finance data
+* Colton set up the SQL database in Azure
+
 # Current Progress as of 3/9/24
 * Randy and Colton fixed the user form for the frontend with validation
 * Randy created the post request to store form data in the database
