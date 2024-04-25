@@ -1,15 +1,18 @@
 /*Styling the login page to display all fields in an organized manner*/
 .login-container {
-  /*background-color: black;*/
   background-image: linear-gradient(#0c3156, #2983fa);
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  height: auto;
+  margin: 0;
 }
 
+
 div#userSignIn {
-  margin-top: 5%;
+  margin-top: 1%;
   margin-bottom: 5%;
   /*background: #12e3e3;*/
   /*background-image: linear-gradient(#fcfcfc, #2983fa);*/

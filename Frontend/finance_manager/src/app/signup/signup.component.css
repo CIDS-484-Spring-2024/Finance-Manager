@@ -13,16 +13,18 @@ img {
 
 .signup-container {
   background-image: linear-gradient(#fcfcfc, #2983fa);
-  /*background-color: black;*/
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  height: auto;
+  margin: 0;
 }
 
 
 div#userSignUp {
-  margin-top: 5%;
+  margin-top: 1%;
   margin-bottom: 5%;
   /*background: #12e3e3;*/
   /*background-image: linear-gradient(#fcfcfc, #2983fa);*/
