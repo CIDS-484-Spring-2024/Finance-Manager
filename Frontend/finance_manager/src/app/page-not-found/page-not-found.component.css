@@ -1,0 +1,13 @@
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+html, body {
+  min-height: 100vh;
+  height: auto;
+  margin: 0;
+}
