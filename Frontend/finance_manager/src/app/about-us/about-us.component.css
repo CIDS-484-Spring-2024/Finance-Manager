@@ -1,4 +1,14 @@
-/*Styles for about us page. this includes containers and flexbox*/
+.flyToMoon-image-container, .happy-img-container {
+  max-width: 100%;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*max-width: calc(45% + 25px);*/
+}
+div>img {
+  width: 55%;
+  height: calc(200px + 15vh);
+}
 
 .aboutus {
   display: flex;
@@ -10,7 +20,7 @@
 }
 .pContainer {
   width: 70vw;
-  background-color: #faf7f7;
+  /*background-image: linear-gradient(lightblue, white);*/
   display: flex;
   justify-content: center;
   align-items: center;

@@ -10,6 +10,9 @@
   <div class="nav navbar-nav" style="display: inline-block">
     <li><a routerLink="/AboutUs" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>About</strong></a></li>
     </div>
+  <div class="nav navbar-nav" style="display: inline-block">
+    <li *ngIf="auth.isFormComplete"><a routerLink="/graph" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>My graph</strong></a></li>
+  </div>
   <div class="nav navbar-nav">
     <li><a routerLink="/my-info" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>My Info</strong></a></li>
   </div>

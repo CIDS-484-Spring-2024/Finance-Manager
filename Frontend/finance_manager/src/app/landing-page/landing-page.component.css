@@ -26,6 +26,7 @@ h2 {
 .item-container {
   display: flex;
   flex-direction: row;
+  margin-bottom: 5%;
   /*gap: 2%;*/
 }
 
@@ -66,4 +67,37 @@ h2 {
 .generate-lead:hover {
   cursor: pointer;
  color: #656565;
+}
+
+.benefits {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+}
+
+div.voyager-title {
+  margin-top: 3%;
+}
+
+.showcase {
+  width: 75%;
+  background-color: lightgray;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15%;
+  margin-top: 5%;
+}
+div>img {
+  margin-top: 15%;
+  margin-left: 15%;
+}
+div>img#hammer {
+  margin-top: 20%;
+}
+
+div>h1.voyager-title {
+  margin-top: 4%;
 }

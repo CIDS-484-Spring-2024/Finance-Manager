@@ -7,18 +7,16 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-// DbDriver is a variable that's used to access the DB calls
 var DbDriver *sql.DB
 
-// Start initiates a connection to the database
 func Start() {
 
 	//database configurations
 	config := mysql.Config{
-		User:                 "frandy",
-		Passwd:               "rfaudir8",
+		User:                 "root",
+		Passwd:               "roottest",
 		Net:                  "tcp",
-		Addr:                 "100.115.207.149",
+		Addr:                 "127.0.0.1",
 		DBName:               "financedbschema",
 		AllowNativePasswords: true,
 	}
@@ -26,6 +24,7 @@ func Start() {
 	var err error
 	DbDriver, err = sql.Open("mysql", config.FormatDSN())
 
+	// establish connection with database
 	// If the database connection fails
 	if err != nil {
 		panic(err)
@@ -37,5 +36,6 @@ func Start() {
 		panic(err)
 	}
 	fmt.Println("successfully pinged db!")
-
+	//close the connection
+	//defer myDB.Close()
 }

@@ -1,0 +1,23 @@
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: auto;
+  background-color: #ffffff;
+}
+
+.bottom-container {
+  /*border-top: 2px solid #868682;*/
+  margin-top: calc((7% + 7vh) / 2);
+}
+
+.redirect:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.footerRow {
+  display: flex;
+  gap: 2%;
+}

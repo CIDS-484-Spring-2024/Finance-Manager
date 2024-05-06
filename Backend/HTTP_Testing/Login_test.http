@@ -2,6 +2,10 @@ POST http://localhost:3200/users/login
 content-type: application/json
 
 {
-  "Email":"testing",
-  "Password":"asdlfjasdkjfsd"
+  "Email": "john",
+  "Password": "john123"
 }
+//{
+//  "Email":"george",
+//  "Password":"george123"
+//}

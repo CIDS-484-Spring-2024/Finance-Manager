@@ -125,7 +125,7 @@
   <div class="form-group">
     <label for="finGoals">What is your financial goal</label>
     <input type="number" name="finGoals" id="finGoals" class="form-control"
-           placeholder="Eg. $1,000,000:" min="0" [(ngModel)]="finForm.finGoal" required>
+           placeholder="Eg. $1,000,000:" min="0" max="1000000000000" [(ngModel)]="finForm.finGoal" required>
   </div>
 
   <button class="btn btn-primary" type="submit">Submit</button>

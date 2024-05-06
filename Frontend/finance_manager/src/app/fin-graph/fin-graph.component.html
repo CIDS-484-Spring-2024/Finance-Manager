@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<div class="container">
+
+<!--  Area to display the users financial information-->
+<div class="user-finance-display">
+  <p class="user-display">Annual Gross Income</p>
+  <p class="user-result" [textContent]="this.AGI"></p>
+  <p class="user-display">Monthly expenses</p>
+  <p class="user-result" [textContent]="monthlyExpenses"></p>
+  <p class="user-display">Tax year</p>
+  <p class="user-result" [textContent]="taxYear"></p>
+  <p class="user-display">State</p>
+  <p class="user-result" [textContent]="UsState"></p>
+  <p class="user-display">Filing status</p>
+  <p class="user-result" [textContent]="filingStatus"></p>
+  <p class="user-display">Financial goal</p>
+  <p class="user-result" [textContent]="goal"></p>
+
+</div>
+<!--Chart to display Financial Information-->
+<div class="chartContainer">
+  <p id="user-name" [textContent]="fullname"></p>
+  <h1 id="graph-title" style="display: flex; justify-content: center; align-items: center;">Moon Money Management</h1>
+  <canvas id="userChart">
+  </canvas>
+  <p class="ratio"> Expense/Earnings</p>
+  <p class="ratio" [textContent]="EERatio"></p>
+  <p class="ratio">Expense/Earnings level</p>
+  <p class="ratio" [textContent]="ratioLevel"></p>
+</div>
+
+</div>

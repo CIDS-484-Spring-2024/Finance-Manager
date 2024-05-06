@@ -1,21 +1,54 @@
 import { Injectable } from '@angular/core';
 import {AuthService} from "./auth.service";
+import {Router} from "@angular/router";
 
-//Injectable decorator for use in injected components
 @Injectable({
   providedIn: 'root'
 })
-
-/** The purpose of this class is to store variables
- * that are shared across components. For example, if I receive an
- * error from the server when trying to authenticate the user, I can
- * display that error on the page so the user knows what's going on.
- * I plan on extending this with other useful functions and variables
- * that enhance the flow and management of data.*/
 export class SessionManagerService {
-  constructor(private auth: AuthService) { }
+
+  constructor(private auth: AuthService, private router: Router) { }
   loginError = ""
   loginorouttext = ""
-  //I will likely store form data form the user in an object here:
+  /*AGI
+    AME
+    Dependents
+    Email
+    FinGoal
+    FirstName
+    LastName
+    Maritalstatus
+    NumDependents
+    State
+    Year
+*/
+  //Variables used to display the users finance information
+  AGI = 0;
+  monthlyExpenses = 0;
+  taxYear = 0;
+  UsState = "";
+  filingStatus = "";
+  goal = 0;
+  fullname = "";
+  EERatio = "" //(((this.monthlyExpenses * 12)/this.AGI)*100).toFixed(2) + "%";
+  ratioLevel = ""//this.getRatioLevel(this.monthlyExpenses*12, this.AGI);
 
+  public populateUserInfo(formData: object) {
+   // @ts-ignore
+    this.AGI = formData.AGI;
+   // @ts-ignore
+    this.monthlyExpenses = formData.AME;
+    // @ts-ignore
+   this.taxYear = formData.Year;
+    // @ts-ignore
+   this.UsState = formData.State;
+   //TODO create class object that has all the fields of formData
+    // @ts-ignore
+    this.filingStatus = formData.Maritalstatus;
+    // @ts-ignore
+    this.goal = formData.FinGoal;
+    // @ts-ignore
+    this.fullname = "Welcome, " + formData.FirstName + " " + formData.LastName;
+    this.router.navigate(['/graph'])
+  }
 }

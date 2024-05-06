@@ -34,7 +34,7 @@ export class LoginComponent {
 //This function takes in an event, makes sure the page doesn't reload,
 //and then sends the user login info and path to the api call service.
   async validateLogin(event: Event)  {
-    event.preventDefault()
+     event.preventDefault()
     let userCredentials = {"Email":this.userEmail, "Password":this.userPassword};
     this.apiCall.postUserAuthData(userCredentials, endpoints.checkLogin);
   }
