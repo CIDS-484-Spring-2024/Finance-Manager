@@ -1,6 +1,16 @@
 import {Component, OnInit} from '@angular/core';
-import {Chart, LinearScale, BarController, CategoryScale, BarElement, DoughnutController, ArcElement, Legend, Title} from "chart.js";
-import { BaseChartDirective } from 'ng2-charts';
+import {
+  ArcElement,
+  BarController,
+  BarElement,
+  CategoryScale,
+  Chart,
+  DoughnutController,
+  Legend,
+  LinearScale,
+  Title
+} from "chart.js";
+import {BaseChartDirective} from 'ng2-charts';
 import {CommonModule} from "@angular/common";
 import {SessionManagerService} from "../services/session-manager.service";
 
@@ -38,17 +48,15 @@ export class FinGraphComponent implements OnInit{
     let chartData = {
       labels: [
         'Monthly Expenses',
-        'Annual Gross Income',
-        'Fun money'
+        'Moon Money'
       ],
       datasets: [{
         label: 'My Finances',
         //Expenses and Earnings, respectively
-        data: [this.monthlyExpenses * 12, this.AGI, this.AGI - (this.monthlyExpenses * 12)],
+        data: [this.monthlyExpenses * 12, this.AGI - (this.monthlyExpenses * 12)],
         //style specifications
         backgroundColor: [
           'rgb(255,0,53)',
-          'rgb(0,255,19)',
           '#338fdc'
         ],
         borderWidth: [5],

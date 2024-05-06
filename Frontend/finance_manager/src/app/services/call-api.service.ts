@@ -81,6 +81,7 @@ export class CallAPIService {
                 await this.getUserGraphInformation()
                }
                else {
+                 this.session.loginorouttext = " Logout"
                  this.router.navigate(['/my-info'])
                }
              }
