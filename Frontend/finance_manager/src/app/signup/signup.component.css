@@ -26,10 +26,11 @@ img {
 div#userSignUp {
   margin-top: 1%;
   margin-bottom: 5%;
+  width: 100%;
   /*background: #12e3e3;*/
   /*background-image: linear-gradient(#fcfcfc, #2983fa);*/
-  width: calc(45% + 25px);
-  max-width: calc(45% + 25px);
+  /*width: calc(45% + 25px);*/
+  /*max-width: calc(45% + 25px);*/
   justify-content: center;
   display: flex;
   align-items: center;
@@ -76,4 +77,13 @@ button {
   align-items: center;
   margin-top: 10%;
   margin-bottom: 5%;
+}
+
+#signup-card {
+  background-color: #ffffff;
+  width: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
 }

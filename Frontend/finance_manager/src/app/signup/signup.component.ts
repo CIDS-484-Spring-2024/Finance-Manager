@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
-import { FormsModule } from "@angular/forms";
+import {Component} from '@angular/core';
+import {FormsModule} from "@angular/forms";
 import {endpoints} from "../api_urls/URL";
 import {CallAPIService} from "../services/call-api.service";
 import {SessionManagerService} from "../services/session-manager.service";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+
 //Component decorator with necessary dependencies and services
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, FaIconComponent],
   providers: [CallAPIService],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
@@ -71,5 +73,6 @@ export class SignupComponent {
    }
    return false;
   }
+
 
 }
