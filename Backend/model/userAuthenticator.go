@@ -22,6 +22,20 @@ func UserSearch(rows *sql.Rows) ([]Users.User, error) {
 	return userSearchList, nil
 }
 
+func GetConnectionDetails() error {
+	query := "CALL financedbschema.onUserConnection(); "
+	stmt, err := Mysqlconnection.DbDriver.Prepare(query)
+
+	if err != nil {
+		fmt.Println("issue getting connection info")
+		return err
+	}
+
+	_, err = stmt.Exec()
+	fmt.Println("execution status: ")
+	return err
+}
+
 func SignUserUp(user Users.User) error {
 	//Prepare the query first to prevent a sql injection attack
 	//query := "INSERT INTO `financedbschema`.`userlogin` ('email', 'passwordHash') VALUES ('?', '?')"

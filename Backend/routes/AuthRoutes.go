@@ -17,6 +17,12 @@ func SignUp(context *gin.Context) {
 		return
 	}
 
+	err = model.GetConnectionDetails()
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"err:": "Failure to get connection info"})
+		return
+	}
+
 	err = model.SignUserUp(user)
 	if err != nil {
 		context.JSON(http.StatusInternalServerError, gin.H{"error:": "Unable to signup user"})
@@ -59,6 +65,12 @@ func Login(context *gin.Context) {
 
 	if err != nil || user.Email == "" || user.Password == "" {
 		context.JSON(http.StatusBadRequest, gin.H{"err": "unable to parse input"})
+		return
+	}
+
+	err = model.GetConnectionDetails()
+	if err != nil {
+		context.JSON(http.StatusBadRequest, gin.H{"err:": "Failure to get connection info"})
 		return
 	}
 
