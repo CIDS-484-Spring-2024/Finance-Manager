@@ -14,7 +14,6 @@ export class AuthService {
 
   //variable to check login status
   isLoggedIn: boolean = localStorage.getItem('isLoggedIn') === "true" || false;
-  //TODO Have this be updated correctly so the title is correctly displayed on the navbar
   isFormComplete = this.isLoggedIn? localStorage.getItem('auth') === 'true': false;
 
 

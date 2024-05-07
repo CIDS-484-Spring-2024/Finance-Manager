@@ -61,7 +61,6 @@ func GetAllUsers(context *gin.Context) {
 func Login(context *gin.Context) {
 	var user Users.User
 	err := context.ShouldBindJSON(&user)
-	//TODO add logic to call database and check if user completed form
 
 	if err != nil || user.Email == "" || user.Password == "" {
 		context.JSON(http.StatusBadRequest, gin.H{"err": "unable to parse input"})

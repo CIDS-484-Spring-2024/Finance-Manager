@@ -42,7 +42,6 @@ export class SessionManagerService {
    this.taxYear = formData.Year;
     // @ts-ignore
    this.UsState = formData.State;
-   //TODO create class object that has all the fields of formData
     // @ts-ignore
     this.filingStatus = formData.Maritalstatus;
     // @ts-ignore
