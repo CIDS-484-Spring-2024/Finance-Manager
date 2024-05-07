@@ -8,24 +8,27 @@
 <!--  ngNativeValidate allows HTML input validation without restriction/deprecation-->
 <form (submit)="submitForm()" ngNativeValidate>
 <!-- The [(ngModel)]="?" is a form of two way data binding that updates the value of whatever it's set to-->
-  <div class="form-group">
+  <div class="row-cols-1">
+    <div class="form-group formItem">
     <label for="fName">First Name</label>
     <input id="fName" name="firstname" class="form-control" placeholder="Enter first name:" [(ngModel)]="finForm.firstname" required>
   </div>
 
-  <div class="form-group">
+    <div class="form-group formItem">
     <label for="lName">Last Name</label>
     <input id="lName" name="lastname" class="form-control" placeholder="Enter last name:" [(ngModel)]="finForm.lastname" required>
   </div>
 
-  <div class="form-group">
+    <div class="form-group formItem">
     <label for="year">Year</label>
     <input type="number" name="year" id="year" class="form-control" placeholder="Tax year:" [min]="minYear" [max]="currentYear" minlength="4" maxlength="4" [(ngModel)]="finForm.year" required>
   </div>
 
-  <div class="form-group">
+
+    <div class="form-group formItem">
     <label for="maritalStatus">Marital Status</label>
     <select name="maritalStatus" id="maritalStatus" [(ngModel)]="finForm.maritalstatus" required>
+      <option value="" disabled>Select one--</option>
       <option value="married-joint">Married joint</option>
       <option value="married-separate">Married separate</option>
       <option value="headofhousehold">Head of household</option>
@@ -33,9 +36,10 @@
     </select>
   </div>
 
-  <div class="form-group">
+    <div class="form-group formItem">
     <label for="state">state</label>
     <select id="state" name="state" class="form-control form-control-lg" [(ngModel)]="finForm.state" required>
+      <option value="" disabled>Select one--</option>
       <option value="AL">Alabama</option>
       <option value="AK">Alaska</option>
       <option value="AZ">Arizona</option>
@@ -97,35 +101,37 @@
     </select>
   </div>
 
-  <div class="form-group">
+    <div class="form-group formItem">
     <label for="AGI">Annual Gross Income</label>
     <input type="number" name="AGI" id="AGI" class="form-control"
            placeholder="Enter your annual gross income:" min="0" [(ngModel)]="finForm.AGI" required>
   </div>
 
-  <div class="form-group">
+
+    <div class="form-group formItem">
     <label for="AME">Average monthly expenses</label>
     <input type="number" name="AME" id="AME" class="form-control"
            placeholder="Enter your average monthly expenses:" min="0" [(ngModel)]="finForm.AME" required>
   </div>
 
-  <div class="form-check">
+    <div class="form-group form-check formItem">
     <label for="dependants" class="form-check-label">Dependants?</label>
     <input id="dependants" name="dependants" type="checkbox" class="form-check-input"
            [(ngModel)]="checkboxes[0].checked" (click)="checkboxSelection()" >
   </div>
 
 <!--  This only shows if the user actually has dependants-->
-  <div class="form-group" *ngIf="checkboxes[0].checked">
+    <div class="form-group formItem" *ngIf="checkboxes[0].checked">
     <label for="numDeps">Number of dependants</label>
     <input type="number" name="numberDependants" id="numDeps" class="form-control"
            placeholder="# of dependants:" min="1" [(ngModel)]="finForm.numDependants">
   </div>
 
-  <div class="form-group">
+    <div class="form-group formItem">
     <label for="finGoals">What is your financial goal</label>
     <input type="number" name="finGoals" id="finGoals" class="form-control"
            placeholder="Eg. $1,000,000:" min="0" max="1000000000000" [(ngModel)]="finForm.finGoal" required>
+  </div>
   </div>
 
   <button class="btn btn-primary" type="submit">Submit</button>

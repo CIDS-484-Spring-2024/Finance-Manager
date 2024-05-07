@@ -14,7 +14,7 @@ h1 {
 
 
 form {
-  width: 70%;
+  width: 60%;
   background-color: #f2f5fa;
   /*padding: 2%;*/
 }
@@ -26,12 +26,16 @@ input {
 #dependants {
   border: 1px solid black;
 }
-
 div {
-  /*margin-bottom: 3%;*/
   background-color: white;
-  padding: 3%;
-  border-left: 2px solid blue;
+  padding: 2%;
+}
+
+.formItem {
+  /*margin-bottom: 3%;*/
+  /*background-color: white;*/
+  /*padding: 2%;*/
+  border-left: 5px solid blue;
 }
 
 input#dependants {
