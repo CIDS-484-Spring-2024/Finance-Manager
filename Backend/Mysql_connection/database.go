@@ -16,7 +16,7 @@ func Start() {
 		User:                 "goapi",
 		Passwd:               "go",
 		Net:                  "tcp",
-		Addr:                 "127.0.0.1",
+		Addr:                 "100.115.207.149",
 		DBName:               "financedbschema",
 		AllowNativePasswords: true,
 	}

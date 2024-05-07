@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Observable, of} from 'rxjs';
-import {tap, delay} from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {Observable, of} from 'rxjs';
+import {delay, tap} from 'rxjs/operators';
 
 /* This is an injectable decorator. It's meant for use
 * in components by injecting it into their constructor. The class contains
@@ -40,6 +40,7 @@ export class AuthService {
   logout() {
     this.isLoggedIn = false;
     localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("email");
   }
 
 
