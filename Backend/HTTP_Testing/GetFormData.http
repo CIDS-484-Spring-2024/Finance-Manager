@@ -1,1 +1,1 @@
-GET http://localhost:3200/form/getForm/john
+GET http://localhost:3200/form/getForm/johnny

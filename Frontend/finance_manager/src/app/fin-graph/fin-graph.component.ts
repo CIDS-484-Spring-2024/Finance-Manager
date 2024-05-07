@@ -13,16 +13,18 @@ import {
 import {BaseChartDirective} from 'ng2-charts';
 import {CommonModule} from "@angular/common";
 import {SessionManagerService} from "../services/session-manager.service";
+import {CallAPIService} from "../services/call-api.service";
+import {RouterLink, RouterLinkActive} from "@angular/router";
 
 @Component({
   selector: 'app-fin-graph',
   standalone: true,
-  imports: [BaseChartDirective, CommonModule],
+  imports: [BaseChartDirective, CommonModule, RouterLink, RouterLinkActive],
   templateUrl: './fin-graph.component.html',
   styleUrl: './fin-graph.component.css'
 })
 export class FinGraphComponent implements OnInit{
-  constructor(private session: SessionManagerService) {
+  constructor(private session: SessionManagerService, private callAPI: CallAPIService) {
     //register chart elements so they're provided in the DOM
     Chart.register(LinearScale, BarController, CategoryScale, BarElement, DoughnutController, ArcElement, Legend, Title);
   }
@@ -39,8 +41,9 @@ export class FinGraphComponent implements OnInit{
   ratioLevel = this.getRatioLevel(this.monthlyExpenses*12, this.AGI);
 
 
+  // @ts-ignore
   ngOnInit() {
-
+    this.callAPI.getUserGraphInformation().then(() => {
      //graph html element we'll use to inject data into
      let graph = document.getElementById("userChart")
 
@@ -80,6 +83,7 @@ export class FinGraphComponent implements OnInit{
         // }
       })
     }
+    })
   }
 
   getRatioLevel (expenses: number, earnings: number) {

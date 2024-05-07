@@ -54,6 +54,7 @@ export class CallAPIService {
 
   async postUserAuthData(dataObj: any, path: string) {
     let userCredentials = {"Email":dataObj.Email, "Password":dataObj.Password};
+    localStorage.removeItem('email')
     localStorage.setItem('email', userCredentials.Email);
      await fetch(path, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.

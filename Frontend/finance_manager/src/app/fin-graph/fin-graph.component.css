@@ -61,4 +61,9 @@ p#user-name {
   margin-right: 1%;
 }
 
-
+.handleError {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

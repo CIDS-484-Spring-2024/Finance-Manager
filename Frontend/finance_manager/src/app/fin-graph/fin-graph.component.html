@@ -1,7 +1,14 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
-<div class="container">
-
+<div class="handleError" *ngIf="UsState == ''">
+  <h1>You must fill out a form before you see your graph!</h1>
+  <a routerLink="/my-info" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>Fill out form
+    here</strong></a>
+</div>
+<div class="container" *ngIf="UsState != ''">
+  <div class="handleError" *ngIf="UsState == ''">
+    <h1>You must fill out a form before you see your graph!</h1>
+    <a routerLink="/my-info" routerLinkActive="active" ariaCurrentWhenActive="page"><strong>Fill out form here</strong></a>
+  </div>
 <!--  Area to display the users financial information-->
   <div class="card">
 <div class="user-finance-display">
